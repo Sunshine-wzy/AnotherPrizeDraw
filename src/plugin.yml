@@ -1,0 +1,9 @@
+name: AnotherPrizeDraw
+version: 1.0
+author: Sunshine_wzy
+
+main: sunst.anotherprizedraw.AnotherPrizeDraw
+
+commands:
+  apd:
+    description: The another prize draw...
