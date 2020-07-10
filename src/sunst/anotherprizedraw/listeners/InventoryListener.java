@@ -48,7 +48,7 @@ public class InventoryListener implements Listener {
 				if(slot >= 9 && slot <= 35){
 					p.getInventory().addItem(inv.getItem(slot));
 					rewardItems.remove(firstOrder + slot - 9);
-					p.sendMessage("¡ìa½±ÀøÎïÆ·ÒÆ³ı³É¹¦£¡");
+					p.sendMessage("Â§aå¥–åŠ±ç‰©å“ç§»é™¤æˆåŠŸï¼");
 					p.playSound(p.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1, 1.2f);
 					p.closeInventory();
 					return;
@@ -63,7 +63,7 @@ public class InventoryListener implements Listener {
 						for(int i=nextOrder; i<rewardItems.size(); i++){
 							if(i >= nextOrder+27){
 								inv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-										"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+										"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 								break;
 							}
 							inv.setItem(9+i-nextOrder, rewardItems.get(i));
@@ -71,7 +71,7 @@ public class InventoryListener implements Listener {
 						
 						if(nextOrder >= 27){
 							inv.setItem(cooToOrder(3, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìe\u21E6 ¡ìaÉÏÒ»Ò³"));
+									"Â§e\u21E6 Â§aä¸Šä¸€é¡µ"));
 						}
 
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_ARMOR, 1, 1.2f);
@@ -88,7 +88,7 @@ public class InventoryListener implements Listener {
 						for(int i=lastOrder; i<rewardItems.size(); i++){
 							if(i >= lastOrder+27){
 								inv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-										"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+										"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 								break;
 							}
 							inv.setItem(9+i-lastOrder, rewardItems.get(i));
@@ -96,7 +96,7 @@ public class InventoryListener implements Listener {
 
 						if(lastOrder >= 27){
 							inv.setItem(cooToOrder(3, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìe\u21E6 ¡ìaÉÏÒ»Ò³"));
+									"Â§e\u21E6 Â§aä¸Šä¸€é¡µ"));
 						}
 
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_ARMOR, 1, 1.2f);
@@ -117,7 +117,7 @@ public class InventoryListener implements Listener {
 				if(slot >= 9 && slot <= 35){
 					p.getInventory().addItem(inv.getItem(slot));
 					bottomItems.remove(firstOrder + slot - 9);
-					p.sendMessage("¡ìa±£µ×ÎïÆ·ÒÆ³ı³É¹¦£¡");
+					p.sendMessage("Â§aä¿åº•ç‰©å“ç§»é™¤æˆåŠŸï¼");
 					p.playSound(p.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1, 1.2f);
 					p.closeInventory();
 					return;
@@ -132,7 +132,7 @@ public class InventoryListener implements Listener {
 						for(int i=nextOrder; i<bottomItems.size(); i++){
 							if(i >= nextOrder+27){
 								inv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-										"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+										"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 								break;
 							}
 							inv.setItem(9+i-nextOrder, bottomItems.get(i));
@@ -140,7 +140,7 @@ public class InventoryListener implements Listener {
 
 						if(nextOrder >= 27){
 							inv.setItem(cooToOrder(3, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìe\u21E6 ¡ìaÉÏÒ»Ò³"));
+									"Â§e\u21E6 Â§aä¸Šä¸€é¡µ"));
 						}
 
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_ARMOR, 1, 1.2f);
@@ -157,7 +157,7 @@ public class InventoryListener implements Listener {
 						for(int i=lastOrder; i<bottomItems.size(); i++){
 							if(i >= lastOrder+27){
 								inv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-										"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+										"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 								break;
 							}
 							inv.setItem(9+i-lastOrder, bottomItems.get(i));
@@ -165,7 +165,7 @@ public class InventoryListener implements Listener {
 
 						if(lastOrder >= 27){
 							inv.setItem(cooToOrder(3, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìe\u21E6 ¡ìaÉÏÒ»Ò³"));
+									"Â§e\u21E6 Â§aä¸Šä¸€é¡µ"));
 						}
 
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_ARMOR, 1, 1.2f);
@@ -187,7 +187,7 @@ public class InventoryListener implements Listener {
 				if(slot >= 9 && slot <= 35){
 					p.getInventory().addItem(inv.getItem(slot));
 					takenItems.remove(firstOrder + slot - 9);
-					p.sendMessage("¡ìaÏûºÄÎïÆ·ÒÆ³ı³É¹¦£¡");
+					p.sendMessage("Â§aæ¶ˆè€—ç‰©å“ç§»é™¤æˆåŠŸï¼");
 					p.playSound(p.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1, 1.2f);
 					p.closeInventory();
 					return;
@@ -202,7 +202,7 @@ public class InventoryListener implements Listener {
 						for(int i=nextOrder; i<takenItems.size(); i++){
 							if(i >= nextOrder+27){
 								inv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-										"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+										"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 								break;
 							}
 							inv.setItem(9+i-nextOrder, takenItems.get(i));
@@ -210,7 +210,7 @@ public class InventoryListener implements Listener {
 
 						if(nextOrder >= 27){
 							inv.setItem(cooToOrder(3, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìe\u21E6 ¡ìaÉÏÒ»Ò³"));
+									"Â§e\u21E6 Â§aä¸Šä¸€é¡µ"));
 						}
 
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_ARMOR, 1, 1.2f);
@@ -227,7 +227,7 @@ public class InventoryListener implements Listener {
 						for(int i=lastOrder; i<takenItems.size(); i++){
 							if(i >= lastOrder+27){
 								inv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-										"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+										"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 								break;
 							}
 							inv.setItem(9+i-lastOrder, takenItems.get(i));
@@ -235,7 +235,7 @@ public class InventoryListener implements Listener {
 
 						if(lastOrder >= 27){
 							inv.setItem(cooToOrder(3, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìe\u21E6 ¡ìaÉÏÒ»Ò³"));
+									"Â§e\u21E6 Â§aä¸Šä¸€é¡µ"));
 						}
 
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_ARMOR, 1, 1.2f);
@@ -279,14 +279,14 @@ public class InventoryListener implements Listener {
 //						cnt++;
 //				if(cnt >= 9){
 //					addingRecipePlayer.remove(p.getUniqueId());
-//					p.sendMessage("¡ìcºÏ³ÉÅä·½²»ÄÜÎª¿Õ£¡");
+//					p.sendMessage("Â§cåˆæˆé…æ–¹ä¸èƒ½ä¸ºç©ºï¼");
 //					return;
 //				}
 //
 //				ItemStack result = addingRecipePlayer.get(p.getUniqueId());
 //				APDRecipe.allAPDRecipe.put(new APDRecipe(matrix, result), result);
 //				addingRecipePlayer.remove(p.getUniqueId());
-//				p.sendMessage("¡ìaºÏ³ÉÅä·½Ìí¼Ó³É¹¦£¡");
+//				p.sendMessage("Â§aåˆæˆé…æ–¹æ·»åŠ æˆåŠŸï¼");
 //			}
 //		}
 	}

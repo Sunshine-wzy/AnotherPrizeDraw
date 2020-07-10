@@ -37,11 +37,11 @@ public class APDGroup implements ConfigurationSerializable {
 	}
 
 	public void setMessage(String message) {
-		this.message = message.replace('&', '¡ì');
+		this.message = message.replace('&', 'Â§');
 	}
 
 	public void addCommand(String command) {
-		this.commands.add(command.replace('&', '¡ì'));
+		this.commands.add(command.replace('&', 'Â§'));
 	}
 
 	

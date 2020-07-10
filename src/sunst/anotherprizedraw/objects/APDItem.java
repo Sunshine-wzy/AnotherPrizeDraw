@@ -15,12 +15,12 @@ public class APDItem extends ItemStack {
 		super(mtl, amount, damage);
 		ItemMeta meta = this.hasItemMeta() ? this.getItemMeta(): Bukkit.getItemFactory().getItemMeta(this.getType());
 
-		//ÉèÖÃlore
+		//è®¾ç½®lore
 		List<String> loreList = new ArrayList<>();
 		Collections.addAll(loreList, lore);
 		meta.setLore(loreList);
 
-		//ÉèÖÃname
+		//è®¾ç½®name
 		meta.setDisplayName(name);
 		this.setItemMeta(meta);
 	}
@@ -41,7 +41,7 @@ public class APDItem extends ItemStack {
 		super(mtl, amount, damage);
 		ItemMeta meta = this.hasItemMeta() ? this.getItemMeta(): Bukkit.getItemFactory().getItemMeta(this.getType());
 
-		//ÉèÖÃname
+		//è®¾ç½®name
 		meta.setDisplayName(name);
 		this.setItemMeta(meta);
 	}
@@ -62,7 +62,7 @@ public class APDItem extends ItemStack {
 		super(item);
 		ItemMeta meta = this.hasItemMeta() ? this.getItemMeta(): Bukkit.getItemFactory().getItemMeta(this.getType());
 
-		//ÉèÖÃname
+		//è®¾ç½®name
 		meta.setDisplayName(name);
 		this.setItemMeta(meta);
 	}
@@ -71,12 +71,12 @@ public class APDItem extends ItemStack {
 		super(item);
 		ItemMeta meta = this.hasItemMeta() ? this.getItemMeta(): Bukkit.getItemFactory().getItemMeta(this.getType());
 
-		//ÉèÖÃlore
+		//è®¾ç½®lore
 		List<String> loreList = new ArrayList<>();
 		Collections.addAll(loreList, lore);
 		meta.setLore(loreList);
 
-		//ÉèÖÃname
+		//è®¾ç½®name
 		meta.setDisplayName(name);
 		this.setItemMeta(meta);
 	}

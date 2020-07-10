@@ -28,7 +28,7 @@ public class APDCommand implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(!sender.isOp()){
-			sender.sendMessage("¡ìcÄú²»ÊÇop£¬²»ÄÜ²é¿´»òÊ¹ÓÃAnotherPrizeDrawµÄÖ¸Áî£¡");
+			sender.sendMessage("Â§cæ‚¨ä¸æ˜¯opï¼Œä¸èƒ½æŸ¥çœ‹æˆ–ä½¿ç”¨AnotherPrizeDrawçš„æŒ‡ä»¤ï¼");
 			return false;
 		}
 		
@@ -48,19 +48,19 @@ public class APDCommand implements CommandExecutor{
 				
 				if(args[0].equalsIgnoreCase("save")){
 					AnotherPrizeDraw.saveResConfig();
-					sender.sendMessage("¡ìaÅäÖÃÎÄ¼ş±£´æ³É¹¦£¡");
+					sender.sendMessage("Â§aé…ç½®æ–‡ä»¶ä¿å­˜æˆåŠŸï¼");
 					return true;
 				}
 
 				if(args[0].equalsIgnoreCase("load")){
 					AnotherPrizeDraw.loadResConfig();
-					sender.sendMessage("¡ìaÅäÖÃÎÄ¼ş¼ÓÔØ³É¹¦£¡");
+					sender.sendMessage("Â§aé…ç½®æ–‡ä»¶åŠ è½½æˆåŠŸï¼");
 					return true;
 				}
 			}
 			
 			if(!(sender instanceof Player)){
-				sender.sendMessage("¡ìcÕâ¸öÖ¸ÁîĞèÒªÍæ¼ÒÖ´ĞĞ£¡");
+				sender.sendMessage("Â§cè¿™ä¸ªæŒ‡ä»¤éœ€è¦ç©å®¶æ‰§è¡Œï¼");
 				return false;
 			}
 			Player p = (Player) sender;
@@ -84,39 +84,39 @@ public class APDCommand implements CommandExecutor{
 			switch (str1) {
 				case "create":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚcreateºóÊäÈëĞèÒª´´½¨µÄ³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨createåè¾“å…¥éœ€è¦åˆ›å»ºçš„æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 					
 					if(allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄúÒÑ´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿ÁË£¬ÇëÎğÖØ¸´´´½¨£¡");
+						p.sendMessage("Â§cæ‚¨å·²åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®äº†ï¼Œè¯·å‹¿é‡å¤åˆ›å»ºï¼");
 						break;
 					}
 					
 					if(handItem==null || handItem.getType()==Material.AIR){
-						p.sendMessage("¡ìcÄúÃ»ÓĞÄÃ×Å³é½±ÏûºÄÖ÷ÎïÆ·£¡");
+						p.sendMessage("Â§cæ‚¨æ²¡æœ‰æ‹¿ç€æŠ½å¥–æ¶ˆè€—ä¸»ç‰©å“ï¼");
 						break;
 					}
 					
 					if(str3==null || str3.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚ³é½±ÏîÄ¿Ãû³ÆºóÊäÈë¸ÅÂÊÄ£Ê½(shared/independent)");
-						p.sendMessage("¡ìb[sharedÎª¹²Ïí¸ÅÂÊ£¬independentÎª¶ÀÁ¢¸ÅÂÊ](¿ÉÊ¹ÓÃTab×Ô¶¯²¹È«)");
+						p.sendMessage("Â§cè¯·åœ¨æŠ½å¥–é¡¹ç›®åç§°åè¾“å…¥æ¦‚ç‡æ¨¡å¼(shared/independent)");
+						p.sendMessage("Â§b[sharedä¸ºå…±äº«æ¦‚ç‡ï¼Œindependentä¸ºç‹¬ç«‹æ¦‚ç‡](å¯ä½¿ç”¨Tabè‡ªåŠ¨è¡¥å…¨)");
 						break;
 					}
 					
 					str3 = str3.toLowerCase();
 					if(!str3.equalsIgnoreCase("shared") && !str3.equalsIgnoreCase("independent")){
-						p.sendMessage("¡ìcÇëÊäÈëshared»òindependent!");
+						p.sendMessage("Â§cè¯·è¾“å…¥sharedæˆ–independent!");
 						break;
 					}
 					
 					if(str4==null || str4.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚ¸ÅÂÊÄ£Ê½ºóÊäÈë´¥·¢Á¬³éÎïÆ·ÊıÁ¿");
+						p.sendMessage("Â§cè¯·åœ¨æ¦‚ç‡æ¨¡å¼åè¾“å…¥è§¦å‘è¿æŠ½ç‰©å“æ•°é‡");
 						break;
 					}
 					
 					if(!str4.matches("\\d+") || Integer.parseInt(str4)<0){
-						p.sendMessage("¡ìcÇëÊäÈëÒ»¸ö·Ç¸ºÕûÊı£¡");
+						p.sendMessage("Â§cè¯·è¾“å…¥ä¸€ä¸ªéè´Ÿæ•´æ•°ï¼");
 						break;
 					}
 					
@@ -125,66 +125,66 @@ public class APDCommand implements CommandExecutor{
 						if(str5.equalsIgnoreCase("true"))
 							isSilence = true;
 						else if(!str5.equalsIgnoreCase("false")){
-							p.sendMessage("¡ìcÇëÊäÈëtrue/falseÒÔÉèÖÃÊÇ·ñ¿ªÆô¾²Ä¬Ä£Ê½(³é½±¹ı³ÌÎŞÉùÒôºÍ±êÌâ)");
+							p.sendMessage("Â§cè¯·è¾“å…¥true/falseä»¥è®¾ç½®æ˜¯å¦å¼€å¯é™é»˜æ¨¡å¼(æŠ½å¥–è¿‡ç¨‹æ— å£°éŸ³å’Œæ ‡é¢˜)");
 							break;
 						}
 					}
 					
 					int conQuantity = Integer.parseInt(str4);
-					allPrizeDrawObjects.put(str2, new PrizeDrawObject(handItem, PrizeDrawObject.PDOMode.getByName(str3), conQuantity, isSilence));
+					allPrizeDrawObjects.put(str2, new PrizeDrawObject(handItem, PrizeDrawObject.PDOMode.getByName(str3), conQuantity, isSilence, 0));
 					
-					p.sendMessage("¡ìaÒÑÎªÄú´´½¨ÃûÎª¡ìe"+str2+"¡ìaµÄ³é½±ÏîÄ¿~");
+					p.sendMessage("Â§aå·²ä¸ºæ‚¨åˆ›å»ºåä¸ºÂ§e"+str2+"Â§açš„æŠ½å¥–é¡¹ç›®~");
 					sendSeparator(p);
-					p.sendMessage("¡ìa¸ÃÏîÄ¿³é½±ÏûºÄÖ÷ÎïÆ·Îª["+getItemName(handItem)+"¡ìa]");
-					p.sendMessage("¡ìa¸ÃÏîÄ¿¸ÅÂÊÄ£Ê½Îª¡ìd"+str3);
+					p.sendMessage("Â§aè¯¥é¡¹ç›®æŠ½å¥–æ¶ˆè€—ä¸»ç‰©å“ä¸º["+getItemName(handItem)+"Â§a]");
+					p.sendMessage("Â§aè¯¥é¡¹ç›®æ¦‚ç‡æ¨¡å¼ä¸ºÂ§d"+str3);
 					if(conQuantity==0)
-						p.sendMessage("¡ìa¸ÃÏîÄ¿²»»á´¥·¢Á¬³é");
-					else p.sendMessage("¡ìa¸ÃÏîÄ¿´¥·¢Á¬³éÎïÆ·ÊıÁ¿Îª¡ìb"+conQuantity);
+						p.sendMessage("Â§aè¯¥é¡¹ç›®ä¸ä¼šè§¦å‘è¿æŠ½");
+					else p.sendMessage("Â§aè¯¥é¡¹ç›®è§¦å‘è¿æŠ½ç‰©å“æ•°é‡ä¸ºÂ§b"+conQuantity);
 					sendSeparator(p);
 					
 					break;
 					
 				case "remove":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚremoveºóÊäÈëĞèÒªÒÆ³ıµÄ³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨removeåè¾“å…¥éœ€è¦ç§»é™¤çš„æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 					
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Î´´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æœªåˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 					
 					if(str3==null || str3.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚ³é½±ÏîÄ¿Ãû³ÆºóÊäÈëacceptÒÔÈ·ÈÏÉ¾³ı£¡");
+						p.sendMessage("Â§cè¯·åœ¨æŠ½å¥–é¡¹ç›®åç§°åè¾“å…¥acceptä»¥ç¡®è®¤åˆ é™¤ï¼");
 						break;
 					}
 					
 					str3 = str3.toLowerCase();
 					if(!str3.equalsIgnoreCase("accept")){
-						p.sendMessage("¡ìcÇëÊäÈëacceptÒÔÈ·ÈÏÉ¾³ı(ÇëÎñ±Ø½÷É÷É¾³ı)!");
+						p.sendMessage("Â§cè¯·è¾“å…¥acceptä»¥ç¡®è®¤åˆ é™¤(è¯·åŠ¡å¿…è°¨æ…åˆ é™¤)!");
 						break;
 					}
 					
 					allPrizeDrawObjects.remove(str2);
-					p.sendMessage("¡ìa³É¹¦½«ÃûÎª¡ìe"+str2+"¡ìaµÄ³é½±ÏîÄ¿ÒÆ³ı£¡");
+					p.sendMessage("Â§aæˆåŠŸå°†åä¸ºÂ§e"+str2+"Â§açš„æŠ½å¥–é¡¹ç›®ç§»é™¤ï¼");
 					break;
 					
 				case "group":
 					if(str2==null || str2.isEmpty()){
 						sendSeparator(sender);
-						sender.sendMessage("¡ì6¡ìlAnotherPrizeDraw ¡ìbGroup½±ÀøÎïÆ·×é²Ù×÷°ïÖú ¡ìdµÚ1Ò³");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] ¡ìa>>²é¿´Ò»¸ö½±ÀøÎïÆ·×éµÄĞÅÏ¢");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] create ³éÖĞ¸Ã×éµÄ¸ÅÂÊ ¡ìa>>´´½¨Ò»¸ö½±ÀøÎïÆ·×é");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] remove ¡ìa>>ÒÆ³ıÒ»¸ö½±ÀøÎïÆ·×é");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] add ¡ìa>>Îª×éÌí¼ÓÒ»¸ö½±ÀøÎïÆ· ¡ìc(ÇëÊÖ³Ö½±ÀøÎïÆ·ÊäÈë)");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] edit ¡ìa>>¿ÉÊÓ»¯±à¼­Ò»¸ö×é(GUI½çÃæ)");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] setmsg ĞÅÏ¢ÄÚÈİ ¡ìa>>ÉèÖÃ³éÖĞ¸Ã×éºóÏòÈ«·ş·¢ËÍµÄĞÅÏ¢");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] addcmd Ö¸ÁîÄÚÈİ(ÎŞĞè/) ¡ìa>>ÉèÖÃ³éÖĞ¸Ã×éºóÖ´ĞĞµÄÖ¸Áî");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] delcmd Ö¸ÁîĞòºÅ ¡ìa>>É¾³ı³éÖĞ¸Ã×éºóÖ´ĞĞÄ³Ò»Ö¸Áî" +
-								"¡ìb(Ö¸ÁîĞòºÅÊäÈë/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] À´²é¿´)");
-						sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] setpro ³éÖĞ¸Ã×éµÄ¸ÅÂÊ ¡ìa>>ÉèÖÃ³éÖĞ¸Ã×éµÄ¸ÅÂÊ(0-100Ö®¼äµÄÊµÊı)");
-						sender.sendMessage("¡ìe/apd g2 ¡ìa>>²é¿´Group½±ÀøÎïÆ·×é²Ù×÷°ïÖúµÚ2Ò³");
+						sender.sendMessage("Â§6Â§lAnotherPrizeDraw Â§bGroupå¥–åŠ±ç‰©å“ç»„æ“ä½œå¸®åŠ© Â§dç¬¬1é¡µ");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] Â§a>>æŸ¥çœ‹ä¸€ä¸ªå¥–åŠ±ç‰©å“ç»„çš„ä¿¡æ¯");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] create æŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡ Â§a>>åˆ›å»ºä¸€ä¸ªå¥–åŠ±ç‰©å“ç»„");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] remove Â§a>>ç§»é™¤ä¸€ä¸ªå¥–åŠ±ç‰©å“ç»„");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] add Â§a>>ä¸ºç»„æ·»åŠ ä¸€ä¸ªå¥–åŠ±ç‰©å“ Â§c(è¯·æ‰‹æŒå¥–åŠ±ç‰©å“è¾“å…¥)");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] edit Â§a>>å¯è§†åŒ–ç¼–è¾‘ä¸€ä¸ªç»„(GUIç•Œé¢)");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] setmsg ä¿¡æ¯å†…å®¹ Â§a>>è®¾ç½®æŠ½ä¸­è¯¥ç»„åå‘å…¨æœå‘é€çš„ä¿¡æ¯");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] addcmd æŒ‡ä»¤å†…å®¹(æ— éœ€/) Â§a>>è®¾ç½®æŠ½ä¸­è¯¥ç»„åæ‰§è¡Œçš„æŒ‡ä»¤");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] delcmd æŒ‡ä»¤åºå· Â§a>>åˆ é™¤æŠ½ä¸­è¯¥ç»„åæ‰§è¡ŒæŸä¸€æŒ‡ä»¤" +
+								"Â§b(æŒ‡ä»¤åºå·è¾“å…¥/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] æ¥æŸ¥çœ‹)");
+						sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] setpro æŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡ Â§a>>è®¾ç½®æŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡(0-100ä¹‹é—´çš„å®æ•°)");
+						sender.sendMessage("Â§e/apd g2 Â§a>>æŸ¥çœ‹Groupå¥–åŠ±ç‰©å“ç»„æ“ä½œå¸®åŠ©ç¬¬2é¡µ");
 						sendSeparator(sender);
 						break;
 					}
@@ -194,17 +194,17 @@ public class APDCommand implements CommandExecutor{
 						
 						if(str4.equals("create")){
 							if(str3==null || str3.isEmpty()){
-								p.sendMessage("¡ìcÇëÔÚcreateÇ°ÊäÈëĞèÒª´´½¨µÄ×éÃû³Æ");
+								p.sendMessage("Â§cè¯·åœ¨createå‰è¾“å…¥éœ€è¦åˆ›å»ºçš„ç»„åç§°");
 								break;
 							}
 
 							if(allPrizeDrawObjects.get(str2).getGroups().containsKey(str3)){
-								p.sendMessage("¡ìcÄúÒÑÔÚ¡ìe"+str2+"¡ìcÖĞ´´½¨¹ıÃûÎª¡ì6"+str3+"¡ìcµÄ×éÁË£¬ÇëÎğÖØ¸´´´½¨£¡");
+								p.sendMessage("Â§cæ‚¨å·²åœ¨Â§e"+str2+"Â§cä¸­åˆ›å»ºè¿‡åä¸ºÂ§6"+str3+"Â§cçš„ç»„äº†ï¼Œè¯·å‹¿é‡å¤åˆ›å»ºï¼");
 								break;
 							}
 
 							if(str5==null || str5.isEmpty()){
-								p.sendMessage("¡ìcÇëÔÚcreateºóÊäÈë³éÖĞ¸Ã×éµÄ¸ÅÂÊ(Ò»¸ö0-100Ö®¼äµÄÊµÊı£¬Îª°Ù·Ö±È)");
+								p.sendMessage("Â§cè¯·åœ¨createåè¾“å…¥æŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡(ä¸€ä¸ª0-100ä¹‹é—´çš„å®æ•°ï¼Œä¸ºç™¾åˆ†æ¯”)");
 								break;
 							}
 
@@ -212,25 +212,25 @@ public class APDCommand implements CommandExecutor{
 							try {
 								probability = Double.parseDouble(str5);
 							} catch (NumberFormatException ex) {
-								p.sendMessage("¡ìcÄúÊäÈëµÄ¸ÅÂÊ²»ÕıÈ·£¡");
+								p.sendMessage("Â§cæ‚¨è¾“å…¥çš„æ¦‚ç‡ä¸æ­£ç¡®ï¼");
 								break;
 							}
 							allPrizeDrawObjects.get(str2).addGroup(str3, probability);
 
-							p.sendMessage("¡ìa³É¹¦ÔÚ¡ìe"+str2+"¡ìaÖĞ´´½¨×é¡ì6"+str3);
-							p.sendMessage("¡ìa³éÖĞ¸Ã×éµÄ¸ÅÂÊÎª¡ìb"+probability+"¡ìd%");
+							p.sendMessage("Â§aæˆåŠŸåœ¨Â§e"+str2+"Â§aä¸­åˆ›å»ºç»„Â§6"+str3);
+							p.sendMessage("Â§aæŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡ä¸ºÂ§b"+probability+"Â§d%");
 							break;
 						}
 					}
 					
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¬ÇëÓÃ/apd create´´½¨£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼Œè¯·ç”¨/apd createåˆ›å»ºï¼");
 						break;
 					}
 
 					if(str3==null || str3.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚ³é½±ÏîÄ¿ÃûºóÊäÈë×éÃû");
-						p.sendMessage("¡ìbÏîÄ¿¡ìe"+str2+"¡ìbËùÓĞ×é£º");
+						p.sendMessage("Â§cè¯·åœ¨æŠ½å¥–é¡¹ç›®ååè¾“å…¥ç»„å");
+						p.sendMessage("Â§bé¡¹ç›®Â§e"+str2+"Â§bæ‰€æœ‰ç»„ï¼š");
 						for(String groupName : allPrizeDrawObjects.get(str2).getGroups().keySet())
 							p.sendMessage(groupName);
 						break;
@@ -238,23 +238,23 @@ public class APDCommand implements CommandExecutor{
 
 					Map<String, APDGroup> groupMap = allPrizeDrawObjects.get(str2).getGroups();
 					if(!groupMap.containsKey(str3)){
-						p.sendMessage("¡ìcÄú»¹Ã»ÔÚ¡ìe"+str2+"¡ìcÖĞ´´½¨¹ıÃûÎª¡ì6"+str3+"¡ìcµÄ×é£¬ÇëÓÃ¡ìa/apd group [ÏîÄ¿Ãû] [×éÃû] create ³éÖĞ¸Ã×éµÄ¸ÅÂÊ ¡ìcÀ´´´½¨£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åœ¨Â§e"+str2+"Â§cä¸­åˆ›å»ºè¿‡åä¸ºÂ§6"+str3+"Â§cçš„ç»„ï¼Œè¯·ç”¨Â§a/apd group [é¡¹ç›®å] [ç»„å] create æŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡ Â§cæ¥åˆ›å»ºï¼");
 						break;
 					}
 
 					APDGroup infoGroup = groupMap.get(str3);
 					if(str4==null || str4.isEmpty()){
 						sendSeparator(p);
-						p.sendMessage("¡ìaÏîÄ¿¡ìe"+str2+"¡ìaÖĞµÄ½±ÀøÎïÆ·×éÃû³Æ£º¡ì6"+str3);
-						p.sendMessage("¡ìa³éÖĞ¸Ã×éµÄ¸ÅÂÊÎª¡ìb"+infoGroup.getProbability()+"¡ìd%");
+						p.sendMessage("Â§aé¡¹ç›®Â§e"+str2+"Â§aä¸­çš„å¥–åŠ±ç‰©å“ç»„åç§°ï¼šÂ§6"+str3);
+						p.sendMessage("Â§aæŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡ä¸ºÂ§b"+infoGroup.getProbability()+"Â§d%");
 						if(infoGroup.getMessage()!=null){
-							p.sendMessage("¡ìa³éÖĞ¸Ã×éºóÏòÈ«·ş·¢ËÍµÄĞÅÏ¢Îª£º");
+							p.sendMessage("Â§aæŠ½ä¸­è¯¥ç»„åå‘å…¨æœå‘é€çš„ä¿¡æ¯ä¸ºï¼š");
 							p.sendMessage(infoGroup.getMessage());
 						}
 						if(infoGroup.getCommands()!=null && !infoGroup.getCommands().isEmpty()){
-							p.sendMessage("¡ìa³éÖĞ¸Ã×éºóÖ´ĞĞµÄÃüÁîÎª£º");
+							p.sendMessage("Â§aæŠ½ä¸­è¯¥ç»„åæ‰§è¡Œçš„å‘½ä»¤ä¸ºï¼š");
 							for(int i=0; i<infoGroup.getCommands().size(); i++){
-								p.sendMessage("¡ìa"+i+": ¡ìf/"+infoGroup.getCommands().get(i));
+								p.sendMessage("Â§a"+i+": Â§f/"+infoGroup.getCommands().get(i));
 							}
 						}
 						sendSeparator(p);
@@ -264,46 +264,46 @@ public class APDCommand implements CommandExecutor{
 					switch (str4) {
 						case "add":
 							if(handItem==null || handItem.getType()==Material.AIR){
-								p.sendMessage("¡ìcÄúÃ»ÓĞÄÃ×Å½±ÀøÎïÆ·£¡");
+								p.sendMessage("Â§cæ‚¨æ²¡æœ‰æ‹¿ç€å¥–åŠ±ç‰©å“ï¼");
 								break;
 							}
 
 							infoGroup.addReward(handItem);
-							p.sendMessage("¡ìa³É¹¦Îª¡ìe"+str2+"¡ìaÖĞµÄ×é¡ì6"+str3+"¡ìaÌí¼Ó½±ÀøÎïÆ·["+getItemName(handItem)+"¡ìa]");
+							p.sendMessage("Â§aæˆåŠŸä¸ºÂ§e"+str2+"Â§aä¸­çš„ç»„Â§6"+str3+"Â§aæ·»åŠ å¥–åŠ±ç‰©å“["+getItemName(handItem)+"Â§a]");
 							break;
 							
 						case "remove":
 							if(str5==null || str5.isEmpty()){
-								p.sendMessage("¡ìcÇëÔÚ×éÃû³ÆºóÊäÈëacceptÒÔÈ·ÈÏÉ¾³ı£¡");
+								p.sendMessage("Â§cè¯·åœ¨ç»„åç§°åè¾“å…¥acceptä»¥ç¡®è®¤åˆ é™¤ï¼");
 								break;
 							}
 
 							str5 = str5.toLowerCase();
 							if(!str5.equalsIgnoreCase("accept")){
-								p.sendMessage("¡ìcÇëÊäÈëacceptÒÔÈ·ÈÏÉ¾³ı(ÇëÎñ±Ø½÷É÷É¾³ı)!");
+								p.sendMessage("Â§cè¯·è¾“å…¥acceptä»¥ç¡®è®¤åˆ é™¤(è¯·åŠ¡å¿…è°¨æ…åˆ é™¤)!");
 								break;
 							}
 							
 							groupMap.remove(str3);
-							p.sendMessage("¡ìa³É¹¦½«¡ìe"+str2+"¡ìaÖĞµÄ¡ì6"+str3+"¡ìa×éÒÆ³ı£¡");
+							p.sendMessage("Â§aæˆåŠŸå°†Â§e"+str2+"Â§aä¸­çš„Â§6"+str3+"Â§aç»„ç§»é™¤ï¼");
 							break;
 							
 						case "edit":
 							if(infoGroup.getRewardItems()==null || infoGroup.getRewardItems().isEmpty()){
-								p.sendMessage("¡ìaÏîÄ¿¡ìe"+str2+"¡ìaÖĞµÄ×é¡ì6"+str3+"¡ìaÃ»ÓĞÈÎºÎ½±ÀøÎïÆ·!");
+								p.sendMessage("Â§aé¡¹ç›®Â§e"+str2+"Â§aä¸­çš„ç»„Â§6"+str3+"Â§aæ²¡æœ‰ä»»ä½•å¥–åŠ±ç‰©å“!");
 								break;
 							}
 							
 							Map<String, Object> dataMap = new HashMap<>();
 							dataMap.put("APDGroup", infoGroup);
 							dataMap.put("firstOrder", 0);
-							Inventory editInv = new APDInventoryHolder<>(dataMap, 5 * 9, "¡ìaÏîÄ¿¡ìe" + str2 + "¡ìaÖĞµÄ×é¡ì6" + str3).getInventory();
+							Inventory editInv = new APDInventoryHolder<>(dataMap, 5 * 9, "Â§aé¡¹ç›®Â§e" + str2 + "Â§aä¸­çš„ç»„Â§6" + str3).getInventory();
 							APDManager.createEdge(editInv, new ItemStack(Material.STAINED_GLASS_PANE));
 							
 							for(int i=0; i<infoGroup.getRewardItems().size(); i++){
 								if(i>=27){
 									editInv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-											"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+											"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 									break;
 								}
 								editInv.setItem(9+i, infoGroup.getRewardItems().get(i));
@@ -315,8 +315,8 @@ public class APDCommand implements CommandExecutor{
 							
 						case "setmsg":
 							if(str5==null || str5.isEmpty()){
-								p.sendMessage("¡ìcÇëÔÚsetmsgºóÊäÈë³éÖĞ¸Ã×éºóÏòÈ«·ş·¢ËÍµÄĞÅÏ¢ÄÚÈİ");
-								p.sendMessage("¡ìb¿ÉÊ¹ÓÃ&×÷ÎªÑÕÉ«´úÂë");
+								p.sendMessage("Â§cè¯·åœ¨setmsgåè¾“å…¥æŠ½ä¸­è¯¥ç»„åå‘å…¨æœå‘é€çš„ä¿¡æ¯å†…å®¹");
+								p.sendMessage("Â§bå¯ä½¿ç”¨&ä½œä¸ºé¢œè‰²ä»£ç ");
 								break;
 							}
 
@@ -325,14 +325,14 @@ public class APDCommand implements CommandExecutor{
 								newMsg.append(args[i]).append(" ");
 							
 							infoGroup.setMessage(newMsg.toString());
-							p.sendMessage("¡ìa³É¹¦½«¡ìe"+str2+"¡ìaÖĞµÄ×é¡ì6"+str3+"¡ìa±»³éÖĞºóÏòÈ«·ş·¢ËÍµÄĞÅÏ¢ÉèÖÃÎª£º");
+							p.sendMessage("Â§aæˆåŠŸå°†Â§e"+str2+"Â§aä¸­çš„ç»„Â§6"+str3+"Â§aè¢«æŠ½ä¸­åå‘å…¨æœå‘é€çš„ä¿¡æ¯è®¾ç½®ä¸ºï¼š");
 							p.sendMessage(infoGroup.getMessage());
 							break;
 							
 						case "addcmd":
 							if(str5==null || str5.isEmpty()){
-								p.sendMessage("¡ìcÇëÔÚaddcmdºóÊäÈë³éÖĞ¸Ã×éºóÖ´ĞĞµÄÖ¸Áî(ÎŞĞèÊäÈë/)");
-								p.sendMessage("¡ìbÇëÔÚÖ¸ÁîÖĞÓÃ{player}´úÌæÍæ¼Ò£¬¿ÉÊ¹ÓÃ&×÷ÎªÑÕÉ«´úÂë");
+								p.sendMessage("Â§cè¯·åœ¨addcmdåè¾“å…¥æŠ½ä¸­è¯¥ç»„åæ‰§è¡Œçš„æŒ‡ä»¤(æ— éœ€è¾“å…¥/)");
+								p.sendMessage("Â§bè¯·åœ¨æŒ‡ä»¤ä¸­ç”¨{player}ä»£æ›¿ç©å®¶ï¼Œå¯ä½¿ç”¨&ä½œä¸ºé¢œè‰²ä»£ç ");
 								break;
 							}
 
@@ -341,30 +341,30 @@ public class APDCommand implements CommandExecutor{
 								newCommand.append(args[i]).append(" ");
 
 							infoGroup.addCommand(newCommand.toString());
-							p.sendMessage("¡ìa³É¹¦Îª¡ìe"+str2+"¡ìaÖĞµÄ×é¡ì6"+str3+"¡ìaÌí¼ÓÁË±»³éÖĞºóÖ´ĞĞµÄÖ¸Áî£º");
-							p.sendMessage("/"+newCommand.toString().replace('&', '¡ì'));
+							p.sendMessage("Â§aæˆåŠŸä¸ºÂ§e"+str2+"Â§aä¸­çš„ç»„Â§6"+str3+"Â§aæ·»åŠ äº†è¢«æŠ½ä¸­åæ‰§è¡Œçš„æŒ‡ä»¤ï¼š");
+							p.sendMessage("/"+newCommand.toString().replace('&', 'Â§'));
 							break;
 							
 						case "delcmd":
 							if(str5==null || !str5.matches("\\d+") || Integer.parseInt(str5)<0){
-								p.sendMessage("¡ìcÇëÔÚdelcmdºóÊäÈëÒ»¸öÎª·Ç¸ºÕûÊıµÄÖ¸ÁîĞòºÅ¡ìb(Ö¸ÁîĞòºÅÊäÈë/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] À´²é¿´)");
+								p.sendMessage("Â§cè¯·åœ¨delcmdåè¾“å…¥ä¸€ä¸ªä¸ºéè´Ÿæ•´æ•°çš„æŒ‡ä»¤åºå·Â§b(æŒ‡ä»¤åºå·è¾“å…¥/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] æ¥æŸ¥çœ‹)");
 								break;
 							}
 							
 							int commandOrder = Integer.parseInt(str5);
 							if(commandOrder>=infoGroup.getCommands().size()){
-								p.sendMessage("¡ìcÄãÊäÈëÖ¸ÁîĞòºÅ²»´æÔÚ£¡");
+								p.sendMessage("Â§cä½ è¾“å…¥æŒ‡ä»¤åºå·ä¸å­˜åœ¨ï¼");
 								break;
 							}
 							
-							p.sendMessage("¡ìa³É¹¦ÒÆ³ı¡ìe"+str2+"¡ìaÖĞµÄ×é¡ì6"+str3+"¡ìaÖĞµÄµÚ"+commandOrder+"ÌõÖ¸Áî£º");
+							p.sendMessage("Â§aæˆåŠŸç§»é™¤Â§e"+str2+"Â§aä¸­çš„ç»„Â§6"+str3+"Â§aä¸­çš„ç¬¬"+commandOrder+"æ¡æŒ‡ä»¤ï¼š");
 							p.sendMessage("/"+infoGroup.getCommands().get(commandOrder));
 							infoGroup.getCommands().remove(commandOrder);
 							break;
 							
 						case "setpro":
 							if(str5==null || str5.isEmpty()){
-								p.sendMessage("¡ìcÇëÔÚsetproºóÊäÈë³éÖĞ¸Ã×éµÄ¸ÅÂÊ(Ò»¸ö0-100Ö®¼äµÄÊµÊı£¬Îª°Ù·Ö±È)");
+								p.sendMessage("Â§cè¯·åœ¨setproåè¾“å…¥æŠ½ä¸­è¯¥ç»„çš„æ¦‚ç‡(ä¸€ä¸ª0-100ä¹‹é—´çš„å®æ•°ï¼Œä¸ºç™¾åˆ†æ¯”)");
 								break;
 							}
 
@@ -372,35 +372,35 @@ public class APDCommand implements CommandExecutor{
 							try {
 								probability = Double.parseDouble(str5);
 							} catch (NumberFormatException ex) {
-								p.sendMessage("¡ìcÄúÊäÈëµÄ¸ÅÂÊ²»ÕıÈ·£¡");
+								p.sendMessage("Â§cæ‚¨è¾“å…¥çš„æ¦‚ç‡ä¸æ­£ç¡®ï¼");
 								break;
 							}
 							
 							infoGroup.setProbability(probability);
-							p.sendMessage("¡ìa³É¹¦½«¡ìe"+str2+"¡ìaÖĞµÄ×é¡ì6"+str3+"¡ìaµÄ³éÖĞ¸ÅÂÊÉèÖÃÎª£º¡ìb"+probability+"¡ìd%");
+							p.sendMessage("Â§aæˆåŠŸå°†Â§e"+str2+"Â§aä¸­çš„ç»„Â§6"+str3+"Â§açš„æŠ½ä¸­æ¦‚ç‡è®¾ç½®ä¸ºï¼šÂ§b"+probability+"Â§d%");
 							break;
 							
 						case "rename":
 							if(str5==null || str5.isEmpty()){
-								p.sendMessage("¡ìcÇëÔÚrenameºóÊäÈë¸Ã×éµÄĞÂÃû³Æ");
+								p.sendMessage("Â§cè¯·åœ¨renameåè¾“å…¥è¯¥ç»„çš„æ–°åç§°");
 								break;
 							}
 							
 							if(groupMap.containsKey(str5)){
-								p.sendMessage("¡ìc¸Ã×éÃû³ÆÒÑ´æÔÚ£¬Çë»»Ò»¸ö£¡");
+								p.sendMessage("Â§cè¯¥ç»„åç§°å·²å­˜åœ¨ï¼Œè¯·æ¢ä¸€ä¸ªï¼");
 								break;
 							}
 							
 							groupMap.put(str5, infoGroup);
 							groupMap.remove(str3);
 
-							p.sendMessage("¡ìaÒÑ½«¡ìd"+str3+"¡ìaÖØÃüÃûÎª¡ì6"+str5);
+							p.sendMessage("Â§aå·²å°†Â§d"+str3+"Â§aé‡å‘½åä¸ºÂ§6"+str5);
 							break;
 							
 						case "get":
 							List<ItemStack> groupRewardItems = infoGroup.getRewardItems();
 							if(groupRewardItems==null || groupRewardItems.isEmpty()){
-								p.sendMessage("¡ìc¸Ã×éÃ»ÓĞ½±ÀøÎïÆ·£¡");
+								p.sendMessage("Â§cè¯¥ç»„æ²¡æœ‰å¥–åŠ±ç‰©å“ï¼");
 								break;
 							}
 							
@@ -413,65 +413,65 @@ public class APDCommand implements CommandExecutor{
 					
 				case "g2":
 					sendSeparator(sender);
-					sender.sendMessage("¡ì6¡ìlAnotherPrizeDraw ¡ìbGroup½±ÀøÎïÆ·×é²Ù×÷°ïÖú ¡ìdµÚ2Ò³");
-					sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [¾ÉµÄ×éÃû³Æ] rename [ĞÂµÄ×éÃû³Æ] ¡ìa>>ÖØÃüÃûÒ»¸ö½±ÀøÎïÆ·×é");
-					sender.sendMessage("¡ìe/apd group [³é½±ÏîÄ¿Ãû³Æ] [×éÃû³Æ] get ¡ìa>>»ñµÃ¸Ã½±ÀøÎïÆ·×éµÄËùÓĞ½±ÀøÎïÆ·");
+					sender.sendMessage("Â§6Â§lAnotherPrizeDraw Â§bGroupå¥–åŠ±ç‰©å“ç»„æ“ä½œå¸®åŠ© Â§dç¬¬2é¡µ");
+					sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [æ—§çš„ç»„åç§°] rename [æ–°çš„ç»„åç§°] Â§a>>é‡å‘½åä¸€ä¸ªå¥–åŠ±ç‰©å“ç»„");
+					sender.sendMessage("Â§e/apd group [æŠ½å¥–é¡¹ç›®åç§°] [ç»„åç§°] get Â§a>>è·å¾—è¯¥å¥–åŠ±ç‰©å“ç»„çš„æ‰€æœ‰å¥–åŠ±ç‰©å“");
 					sendSeparator(sender);
 					break;
 					
 					
 				case "addbottom":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚaddbottomºóÊäÈëÒÑÓĞµÄ³é½±ÏîÄ¿Ãû³Æ£¨ÈôÃ»ÓĞ£¬ÇëÓÃ/apd create´´½¨£©");
+						p.sendMessage("Â§cè¯·åœ¨addbottomåè¾“å…¥å·²æœ‰çš„æŠ½å¥–é¡¹ç›®åç§°ï¼ˆè‹¥æ²¡æœ‰ï¼Œè¯·ç”¨/apd createåˆ›å»ºï¼‰");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¬ÇëÓÃ/apd create´´½¨£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼Œè¯·ç”¨/apd createåˆ›å»ºï¼");
 						break;
 					}
 
 					if(handItem==null || handItem.getType()==Material.AIR){
-						p.sendMessage("¡ìcÄúÃ»ÓĞÄÃ×Å±£µ×½±ÀøÎïÆ·£¡");
+						p.sendMessage("Â§cæ‚¨æ²¡æœ‰æ‹¿ç€ä¿åº•å¥–åŠ±ç‰©å“ï¼");
 						break;
 					}
 					
 					allPrizeDrawObjects.get(str2).addBottomReward(handItem);
 
 					
-					p.sendMessage("¡ìa³É¹¦Îª¡ìe"+str2+"¡ìaÌí¼Ó±£µ×½±ÀøÎïÆ·["+getItemName(handItem)+"¡ìa]");
+					p.sendMessage("Â§aæˆåŠŸä¸ºÂ§e"+str2+"Â§aæ·»åŠ ä¿åº•å¥–åŠ±ç‰©å“["+getItemName(handItem)+"Â§a]");
 					
 					break;
 					
 				case "addtaken":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚaddtakenºóÊäÈëÒÑÓĞµÄ³é½±ÏîÄ¿Ãû³Æ£¨ÈôÃ»ÓĞ£¬ÇëÓÃ/apd create´´½¨£©");
+						p.sendMessage("Â§cè¯·åœ¨addtakenåè¾“å…¥å·²æœ‰çš„æŠ½å¥–é¡¹ç›®åç§°ï¼ˆè‹¥æ²¡æœ‰ï¼Œè¯·ç”¨/apd createåˆ›å»ºï¼‰");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¬ÇëÓÃ/apd create´´½¨£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼Œè¯·ç”¨/apd createåˆ›å»ºï¼");
 						break;
 					}
 
 					if(handItem==null || handItem.getType()==Material.AIR){
-						p.sendMessage("¡ìcÄúÃ»ÓĞÄÃ×Å³é½±ÏûºÄÎïÆ·£¡");
+						p.sendMessage("Â§cæ‚¨æ²¡æœ‰æ‹¿ç€æŠ½å¥–æ¶ˆè€—ç‰©å“ï¼");
 						break;
 					}
 					
 					allPrizeDrawObjects.get(str2).addOtherTakenItem(handItem);
 					
-					p.sendMessage("¡ìa³É¹¦Îª¡ìe"+str2+"¡ìaÌí¼ÓÏûºÄÎïÆ·["+getItemName(handItem)+"¡ìa]");
+					p.sendMessage("Â§aæˆåŠŸä¸ºÂ§e"+str2+"Â§aæ·»åŠ æ¶ˆè€—ç‰©å“["+getItemName(handItem)+"Â§a]");
 					
 					break;
 					
 				case "list":
 					if(allPrizeDrawObjects.isEmpty()){
-						p.sendMessage("¡ìcµ±Ç°»¹Ã»ÓĞÈÎºÎ³é½±ÏîÄ¿£¡¿ìÊäÈë/apd create´´½¨Ò»¸ö°É~");
+						p.sendMessage("Â§cå½“å‰è¿˜æ²¡æœ‰ä»»ä½•æŠ½å¥–é¡¹ç›®ï¼å¿«è¾“å…¥/apd createåˆ›å»ºä¸€ä¸ªå§~");
 						break;
 					}
 					
-					p.sendMessage("¡ìaµ±Ç°ËùÓĞ³é½±ÏîÄ¿Ãû³Æ£º");
+					p.sendMessage("Â§aå½“å‰æ‰€æœ‰æŠ½å¥–é¡¹ç›®åç§°ï¼š");
 					for(Map.Entry<String, PrizeDrawObject> entry : allPrizeDrawObjects.entrySet()){
 						p.sendMessage(entry.getKey());
 					}
@@ -480,23 +480,23 @@ public class APDCommand implements CommandExecutor{
 					
 				case "info":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚinfoºóÊäÈëÒÑÓĞµÄ³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨infoåè¾“å…¥å·²æœ‰çš„æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
 					PrizeDrawObject infoPDO = allPrizeDrawObjects.get(str2);
 					sendSeparator(p);
-					p.sendMessage("¡ìa³é½±ÏîÄ¿Ãû³Æ£º¡ìe"+str2);
-					p.sendMessage("¡ìa¸ÃÏîÄ¿³é½±ÏûºÄÖ÷ÎïÆ·Îª["+getItemName(infoPDO.getTakenItem())+"¡ìa]");
-					p.sendMessage("¡ìa¸ÃÏîÄ¿¸ÅÂÊÄ£Ê½Îª¡ìd"+infoPDO.getMode().getName());
+					p.sendMessage("Â§aæŠ½å¥–é¡¹ç›®åç§°ï¼šÂ§e"+str2);
+					p.sendMessage("Â§aè¯¥é¡¹ç›®æŠ½å¥–æ¶ˆè€—ä¸»ç‰©å“ä¸º["+getItemName(infoPDO.getTakenItem())+"Â§a]");
+					p.sendMessage("Â§aè¯¥é¡¹ç›®æ¦‚ç‡æ¨¡å¼ä¸ºÂ§d"+infoPDO.getMode().getName());
 					if(infoPDO.getContinuousQuantity()==0)
-						p.sendMessage("¡ìa¸ÃÏîÄ¿²»»á´¥·¢Á¬³é");
-					else p.sendMessage("¡ìa¸ÃÏîÄ¿´¥·¢Á¬³éÎïÆ·ÊıÁ¿Îª¡ìb"+infoPDO.getContinuousQuantity());
+						p.sendMessage("Â§aè¯¥é¡¹ç›®ä¸ä¼šè§¦å‘è¿æŠ½");
+					else p.sendMessage("Â§aè¯¥é¡¹ç›®è§¦å‘è¿æŠ½ç‰©å“æ•°é‡ä¸ºÂ§b"+infoPDO.getContinuousQuantity());
 					sendSeparator(p);
 
 
@@ -504,32 +504,32 @@ public class APDCommand implements CommandExecutor{
 
 				case "editbom":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚeditbomºóÊäÈëÒÑÓĞµÄ³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨editbomåè¾“å…¥å·²æœ‰çš„æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 					
 					PrizeDrawObject bomPDO = allPrizeDrawObjects.get(str2);
 
 					if(bomPDO.getBottomRewards()==null || bomPDO.getBottomRewards().isEmpty()){
-						p.sendMessage("¡ìaÏîÄ¿¡ìe"+str2+"¡ìaÃ»ÓĞÈÎºÎ±£µ×ÎïÆ·!");
+						p.sendMessage("Â§aé¡¹ç›®Â§e"+str2+"Â§aæ²¡æœ‰ä»»ä½•ä¿åº•ç‰©å“!");
 						break;
 					}
 					
 					Map<String, Object> dataMapBom = new HashMap<>();
 					dataMapBom.put("BomPDO", bomPDO);
 					dataMapBom.put("firstOrder", 0);
-					Inventory bomEditInv = new APDInventoryHolder<>(dataMapBom, 5 * 9, "¡ìaÏîÄ¿¡ìe" + str2 + "¡ìaµÄ±£µ×ÎïÆ·").getInventory();
+					Inventory bomEditInv = new APDInventoryHolder<>(dataMapBom, 5 * 9, "Â§aé¡¹ç›®Â§e" + str2 + "Â§açš„ä¿åº•ç‰©å“").getInventory();
 					APDManager.createEdge(bomEditInv, new ItemStack(Material.STAINED_GLASS_PANE));
 
 					for(int i=0; i<bomPDO.getBottomRewards().size(); i++){
 						if(i>=27){
 							bomEditInv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+									"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 							break;
 						}
 						bomEditInv.setItem(9+i, bomPDO.getBottomRewards().get(i));
@@ -541,32 +541,32 @@ public class APDCommand implements CommandExecutor{
 
 				case "edittaken":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚedittakenºóÊäÈëÒÑÓĞµÄ³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨edittakenåè¾“å…¥å·²æœ‰çš„æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 					
 					PrizeDrawObject takenPDO = allPrizeDrawObjects.get(str2);
 
 					if(takenPDO.getOtherTakenItems()==null || takenPDO.getOtherTakenItems().isEmpty()){
-						p.sendMessage("¡ìaÏîÄ¿¡ìe"+str2+"¡ìaÃ»ÓĞÈÎºÎÏûºÄÎïÆ·!");
+						p.sendMessage("Â§aé¡¹ç›®Â§e"+str2+"Â§aæ²¡æœ‰ä»»ä½•æ¶ˆè€—ç‰©å“!");
 						break;
 					}
 					
 					Map<String, Object> dataMapTaken = new HashMap<>();
 					dataMapTaken.put("TakenPDO", takenPDO);
 					dataMapTaken.put("firstOrder", 0);
-					Inventory takenEditInv = new APDInventoryHolder<>(dataMapTaken, 5 * 9, "¡ìaÏîÄ¿¡ìe" + str2 + "¡ìaµÄÏûºÄÎïÆ·").getInventory();
+					Inventory takenEditInv = new APDInventoryHolder<>(dataMapTaken, 5 * 9, "Â§aé¡¹ç›®Â§e" + str2 + "Â§açš„æ¶ˆè€—ç‰©å“").getInventory();
 					APDManager.createEdge(takenEditInv, new ItemStack(Material.STAINED_GLASS_PANE));
 
 					for(int i=0; i<takenPDO.getOtherTakenItems().size(); i++){
 						if(i>=27){
 							takenEditInv.setItem(cooToOrder(7, 5), new APDItem(Material.STAINED_GLASS_PANE, (short) 5,
-									"¡ìaÏÂÒ»Ò³ ¡ìe\u21E8"));
+									"Â§aä¸‹ä¸€é¡µ Â§e\u21E8"));
 							break;
 						}
 						takenEditInv.setItem(9+i, takenPDO.getOtherTakenItems().get(i));
@@ -578,105 +578,105 @@ public class APDCommand implements CommandExecutor{
 					
 				case "rename":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚrenameºóÊäÈëÒÑÓĞµÄ³é½±ÏîÄ¿Ãû³ÆÒÔ¼°ĞÂµÄ³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨renameåè¾“å…¥å·²æœ‰çš„æŠ½å¥–é¡¹ç›®åç§°ä»¥åŠæ–°çš„æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 					
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¬²»ÄÜÖØÃüÃû£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼Œä¸èƒ½é‡å‘½åï¼");
 						break;
 					}
 
 					if(str3==null || str3.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚ¾ÉÏîÄ¿ÃûºóÊäÈëĞÂÏîÄ¿Ãû");
+						p.sendMessage("Â§cè¯·åœ¨æ—§é¡¹ç›®ååè¾“å…¥æ–°é¡¹ç›®å");
 						break;
 					}
 					
 					allPrizeDrawObjects.put(str3, allPrizeDrawObjects.get(str2));
 					allPrizeDrawObjects.remove(str2);
-					p.sendMessage("¡ìaÒÑ½«¡ìd"+str2+"¡ìaÖØÃüÃûÎª¡ìe"+str3);
+					p.sendMessage("Â§aå·²å°†Â§d"+str2+"Â§aé‡å‘½åä¸ºÂ§e"+str3);
 					
 					break;
 					
 				case "set":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚsetºóÊäÈë³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨setåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
 					if(handItem==null || handItem.getType()==Material.AIR){
-						p.sendMessage("¡ìcÄúÃ»ÓĞÄÃ×Å³é½±ÏûºÄÖ÷ÎïÆ·£¡");
+						p.sendMessage("Â§cæ‚¨æ²¡æœ‰æ‹¿ç€æŠ½å¥–æ¶ˆè€—ä¸»ç‰©å“ï¼");
 						break;
 					}
 					
 					allPrizeDrawObjects.get(str2).setTakenItem(handItem);
-					p.sendMessage("¡ìaÒÑ½«¡ìe"+str2+"¡ìaµÄÏûºÄÖ÷ÎïÆ·ÉèÖÃÎª["+getItemName(handItem)+"¡ìa]");
+					p.sendMessage("Â§aå·²å°†Â§e"+str2+"Â§açš„æ¶ˆè€—ä¸»ç‰©å“è®¾ç½®ä¸º["+getItemName(handItem)+"Â§a]");
 					
 					break;
 					
 				case "setmode":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚsetmodeºóÊäÈë³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨setmodeåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
 					if(str3==null || str3.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚ³é½±ÏîÄ¿Ãû³ÆºóÊäÈë¸ÅÂÊÄ£Ê½(shared/independent)");
-						p.sendMessage("¡ìb[sharedÎª¹²Ïí¸ÅÂÊ£¬independentÎª¶ÀÁ¢¸ÅÂÊ](¿ÉÊ¹ÓÃTab×Ô¶¯²¹È«)");
+						p.sendMessage("Â§cè¯·åœ¨æŠ½å¥–é¡¹ç›®åç§°åè¾“å…¥æ¦‚ç‡æ¨¡å¼(shared/independent)");
+						p.sendMessage("Â§b[sharedä¸ºå…±äº«æ¦‚ç‡ï¼Œindependentä¸ºç‹¬ç«‹æ¦‚ç‡](å¯ä½¿ç”¨Tabè‡ªåŠ¨è¡¥å…¨)");
 						break;
 					}
 					
 					str3 = str3.toLowerCase();
 					if(!str3.equalsIgnoreCase("shared") && !str3.equalsIgnoreCase("independent")){
-						p.sendMessage("¡ìcÇëÊäÈëshared»òindependent!");
+						p.sendMessage("Â§cè¯·è¾“å…¥sharedæˆ–independent!");
 						break;
 					}
 					
 					allPrizeDrawObjects.get(str2).setMode(str3);
-					p.sendMessage("¡ìaÒÑ½«¡ìe"+str2+"¡ìaµÄ¸ÅÂÊÄ£Ê½ÉèÖÃÎª¡ìd"+str3);
+					p.sendMessage("Â§aå·²å°†Â§e"+str2+"Â§açš„æ¦‚ç‡æ¨¡å¼è®¾ç½®ä¸ºÂ§d"+str3);
 					
 					break;
 					
 				case "setcon":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚsetconºóÊäÈë³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨setconåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
 					if(str3==null || str3.isEmpty()){
-						p.sendMessage("¡ìcÇëÊäÈë´¥·¢Á¬³éÎïÆ·ÊıÁ¿");
+						p.sendMessage("Â§cè¯·è¾“å…¥è§¦å‘è¿æŠ½ç‰©å“æ•°é‡");
 						break;
 					}
 
 					if(!str3.matches("\\d+") || Integer.parseInt(str3)<0){
-						p.sendMessage("¡ìcÇëÊäÈëÒ»¸ö·Ç¸ºÕûÊı£¡");
+						p.sendMessage("Â§cè¯·è¾“å…¥ä¸€ä¸ªéè´Ÿæ•´æ•°ï¼");
 						break;
 					}
 
 					int newConQuantity = Integer.parseInt(str3);
 					allPrizeDrawObjects.get(str2).setContinuousQuantity(newConQuantity);
-					p.sendMessage("¡ìaÒÑ½«¡ìe"+str2+"¡ìaµÄ´¥·¢Á¬³éÎïÆ·ÊıÁ¿ÉèÖÃÎª¡ìb"+newConQuantity);
+					p.sendMessage("Â§aå·²å°†Â§e"+str2+"Â§açš„è§¦å‘è¿æŠ½ç‰©å“æ•°é‡è®¾ç½®ä¸ºÂ§b"+newConQuantity);
 					
 					break;
 					
 //				case "recadd":
 //					if(handItem==null || handItem.getType()==Material.AIR){
-//						p.sendMessage("¡ìcÇë½«ĞèÒª×Ô¶¨ÒåºÏ³ÉµÄÎïÆ·ÄÃÔÚÊÖÖĞ£¡(°üÀ¨ÊıÁ¿)");
+//						p.sendMessage("Â§cè¯·å°†éœ€è¦è‡ªå®šä¹‰åˆæˆçš„ç‰©å“æ‹¿åœ¨æ‰‹ä¸­ï¼(åŒ…æ‹¬æ•°é‡)");
 //						break;
 //					}
 //
@@ -687,12 +687,12 @@ public class APDCommand implements CommandExecutor{
 //					
 //				case "recdel":
 //					if(handItem==null || handItem.getType()==Material.AIR){
-//						p.sendMessage("¡ìcÇë½«ĞèÒªÒÆ³ı×Ô¶¨ÒåºÏ³ÉµÄÎïÆ·ÄÃÔÚÊÖÖĞ£¡(°üÀ¨ÊıÁ¿)");
+//						p.sendMessage("Â§cè¯·å°†éœ€è¦ç§»é™¤è‡ªå®šä¹‰åˆæˆçš„ç‰©å“æ‹¿åœ¨æ‰‹ä¸­ï¼(åŒ…æ‹¬æ•°é‡)");
 //						break;
 //					}
 //					
 //					if(!APDRecipe.allAPDRecipe.containsValue(handItem)){
-//						p.sendMessage("¡ìcÕâ¸öÎïÆ·Ã»ÓĞ×Ô¶¨ÒåºÏ³É£¡(°üÀ¨ÊıÁ¿)");
+//						p.sendMessage("Â§cè¿™ä¸ªç‰©å“æ²¡æœ‰è‡ªå®šä¹‰åˆæˆï¼(åŒ…æ‹¬æ•°é‡)");
 //						break;
 //					}
 //					
@@ -700,17 +700,17 @@ public class APDCommand implements CommandExecutor{
 				
 				case "silence":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚsilenceºóÊäÈë³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨silenceåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
 					if(str3==null || str3.isEmpty()){
-						p.sendMessage("¡ìcÇëÊäÈëtrue»òfalseÒÔ¿ªÆô»ò¹Ø±Õ¾²Ä¬Ä£Ê½(³é½±¹ı³ÌÃ»ÓĞÉùÒôºÍ±êÌâ)");
+						p.sendMessage("Â§cè¯·è¾“å…¥trueæˆ–falseä»¥å¼€å¯æˆ–å…³é—­é™é»˜æ¨¡å¼(æŠ½å¥–è¿‡ç¨‹æ²¡æœ‰å£°éŸ³å’Œæ ‡é¢˜)");
 						break;
 					}
 
@@ -718,69 +718,109 @@ public class APDCommand implements CommandExecutor{
 					if(str3.equalsIgnoreCase("true"))
 						setSilence = true;
 					else if(!str3.equalsIgnoreCase("false")){
-						p.sendMessage("¡ìcÇëÊäÈëtrue»òfalseÒÔ¿ªÆô»ò¹Ø±Õ¾²Ä¬Ä£Ê½(³é½±¹ı³ÌÃ»ÓĞÉùÒôºÍ±êÌâ)");
+						p.sendMessage("Â§cè¯·è¾“å…¥trueæˆ–falseä»¥å¼€å¯æˆ–å…³é—­é™é»˜æ¨¡å¼(æŠ½å¥–è¿‡ç¨‹æ²¡æœ‰å£°éŸ³å’Œæ ‡é¢˜)");
 						break;
 					}
 					
 					allPrizeDrawObjects.get(str2).setSilence(setSilence);
-					p.sendMessage("¡ìa³É¹¦½«ÏîÄ¿¡ìe"+str2+"¡ìaµÄ¾²Ä¬Ä£Ê½ÉèÖÃÎª£º¡ìf"+setSilence);
+					p.sendMessage("Â§aæˆåŠŸå°†é¡¹ç›®Â§e"+str2+"Â§açš„é™é»˜æ¨¡å¼è®¾ç½®ä¸ºï¼šÂ§f"+setSilence);
 					break;
 					
 				case "get":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚgetºóÊäÈë³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨getåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
-					p.getWorld().dropItem(p.getLocation(), allPrizeDrawObjects.get(str2).getTakenItem());
+					if (p.getInventory().firstEmpty() == -1) {
+						p.getWorld().dropItem(p.getLocation(), allPrizeDrawObjects.get(str2).getTakenItem());
+					} else {
+						p.getInventory().addItem(allPrizeDrawObjects.get(str2).getTakenItem());
+					}
 					break;
 					
 				case "gettaken":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚgettakenºóÊäÈë³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨gettakenåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
 					List<ItemStack> otherTakenItemsGet = allPrizeDrawObjects.get(str2).getOtherTakenItems();
 					if(otherTakenItemsGet==null || otherTakenItemsGet.isEmpty()){
-						p.sendMessage("¡ìcÏîÄ¿¡ìe"+str2+"¡ìcÃ»ÓĞÆäËûÏûºÄÎïÆ·£¡");
+						p.sendMessage("Â§cé¡¹ç›®Â§e"+str2+"Â§cæ²¡æœ‰å…¶ä»–æ¶ˆè€—ç‰©å“ï¼");
 						break;
 					}
 					
-					for(ItemStack otherItem : otherTakenItemsGet)
-						p.getWorld().dropItem(p.getLocation(), otherItem);
+					for(ItemStack otherItem : otherTakenItemsGet) {
+						if (p.getInventory().firstEmpty() == -1) {
+							p.getWorld().dropItem(p.getLocation(), otherItem);
+						} else {
+							p.getInventory().addItem(otherItem);
+						}
+					}
 					break;
 					
 				case "getall":
 					if(str2==null || str2.isEmpty()){
-						p.sendMessage("¡ìcÇëÔÚgetallºóÊäÈë³é½±ÏîÄ¿Ãû³Æ");
+						p.sendMessage("Â§cè¯·åœ¨getallåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
 						break;
 					}
 
 					if(!allPrizeDrawObjects.containsKey(str2)){
-						p.sendMessage("¡ìcÄú»¹Ã»´´½¨¹ıÃûÎª¡ìe"+str2+"¡ìcµÄ³é½±ÏîÄ¿£¡");
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
 						break;
 					}
 
-					p.getWorld().dropItem(p.getLocation(), allPrizeDrawObjects.get(str2).getTakenItem());
+					if (p.getInventory().firstEmpty() == -1) {
+						p.getWorld().dropItem(p.getLocation(), allPrizeDrawObjects.get(str2).getTakenItem());
+					} else {
+						p.getInventory().addItem(allPrizeDrawObjects.get(str2).getTakenItem());
+					}
 
 					List<ItemStack> otherTakenItemsGetAll = allPrizeDrawObjects.get(str2).getOtherTakenItems();
 					if(otherTakenItemsGetAll!=null && !otherTakenItemsGetAll.isEmpty()){
-						for(ItemStack otherItem : otherTakenItemsGetAll)
-							p.getWorld().dropItem(p.getLocation(), otherItem);
+						for(ItemStack otherItem : otherTakenItemsGetAll) {
+							if (p.getInventory().firstEmpty() == -1) {
+								p.getWorld().dropItem(p.getLocation(), otherItem);
+							} else {
+								p.getInventory().addItem(otherItem);
+							}
+						}
 					}
 					break;
-					
+
+				case "setcooldown":
+					if(str2==null || str2.isEmpty()){
+						p.sendMessage("Â§cè¯·åœ¨setcooldownåè¾“å…¥æŠ½å¥–é¡¹ç›®åç§°");
+						break;
+					}
+
+					if(!allPrizeDrawObjects.containsKey(str2)){
+						p.sendMessage("Â§cæ‚¨è¿˜æ²¡åˆ›å»ºè¿‡åä¸ºÂ§e"+str2+"Â§cçš„æŠ½å¥–é¡¹ç›®ï¼");
+						break;
+					}
+
+					if(!str3.matches("\\d+") || Integer.parseInt(str3) < 0){
+						p.sendMessage("Â§cè¯·è¾“å…¥ä¸€ä¸ªéè´Ÿæ•´æ•°ï¼");
+						break;
+					}
+
+					int cooldown = Integer.parseInt(str3);
+
+					allPrizeDrawObjects.get(str2).setCooldown(cooldown);
+					p.sendMessage("Â§aæˆåŠŸå°†é¡¹ç›®Â§e"+str2+"Â§açš„å†·å´æ—¶é—´è®¾ç½®ä¸ºï¼šÂ§f"+cooldown+"ç§’");
+					break;
+
 				default:
 					break;
 			}
@@ -809,46 +849,47 @@ public class APDCommand implements CommandExecutor{
 		sendSeparator(sender);
 		switch (page) {
 			case 1:
-				sender.sendMessage("¡ì6¡ìlAnotherPrizeDraw ¡ìbÃüÁîÖ¸ÄÏ ¡ìdµÚ1Ò³");
-				sender.sendMessage("¡ìe/apd create [³é½±ÏîÄ¿Ãû³Æ] ¸ÅÂÊÄ£Ê½(shared/independent) ´¥·¢Á¬³éÎïÆ·ÊıÁ¿(0Ôò²»´¥·¢Á¬³é) " +
-						"ÊÇ·ñ¿ªÆô¾²Ä¬Ä£Ê½(true/false,ÈôÊ¡ÂÔÔòÎªfalse) ¡ìa>>´´½¨Ò»¸ö³é½±ÏîÄ¿ ¡ìc(ÇëÊÖ³Ö³é½±ÏûºÄµÄÖ÷ÎïÆ·ÊäÈë)");
-				sender.sendMessage("¡ìe/apd remove [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>ÒÆ³ıÒ»¸ö³é½±ÏîÄ¿ ¡ìc(Çë½÷É÷Ê¹ÓÃ)");
-				sender.sendMessage("¡ìe/apd group ¡ìa>>²é¿´½±ÀøÎïÆ·×é²Ù×÷°ïÖú");
-				sender.sendMessage("¡ìe/apd addbottom [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>Îª³é½±ÏîÄ¿Ìí¼ÓÒ»¸ö±£µ×½±ÀøÎïÆ· ¡ìc(ÇëÊÖ³Ö±£µ×½±ÀøÎïÆ·ÊäÈë)");
-				sender.sendMessage("¡ìe/apd addtaken [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>Îª³é½±ÏîÄ¿Ìí¼ÓÒ»¸öÏûºÄÎïÆ· ¡ìc(ÇëÊÖ³Ö³é½±ÏûºÄÎïÆ·ÊäÈë)");
-				sender.sendMessage("¡ìe/apd list ¡ìa>>²é¿´µ±Ç°ËùÓĞ³é½±ÏîÄ¿Ãû³Æ");
-				sender.sendMessage("¡ìe/apd info [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>²é¿´Ö¸¶¨³é½±ÏîÄ¿µÄĞÅÏ¢");
-				sender.sendMessage("¡ìe/apd 2 ¡ìa>>²é¿´APDÃüÁîÖ¸ÄÏµÚ2Ò³");
+				sender.sendMessage("Â§6Â§lAnotherPrizeDraw Â§bå‘½ä»¤æŒ‡å— Â§dç¬¬1é¡µ");
+				sender.sendMessage("Â§e/apd create [æŠ½å¥–é¡¹ç›®åç§°] æ¦‚ç‡æ¨¡å¼(shared/independent) è§¦å‘è¿æŠ½ç‰©å“æ•°é‡(0åˆ™ä¸è§¦å‘è¿æŠ½) " +
+						"æ˜¯å¦å¼€å¯é™é»˜æ¨¡å¼(true/false,è‹¥çœç•¥åˆ™ä¸ºfalse) Â§a>>åˆ›å»ºä¸€ä¸ªæŠ½å¥–é¡¹ç›® Â§c(è¯·æ‰‹æŒæŠ½å¥–æ¶ˆè€—çš„ä¸»ç‰©å“è¾“å…¥)");
+				sender.sendMessage("Â§e/apd remove [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>ç§»é™¤ä¸€ä¸ªæŠ½å¥–é¡¹ç›® Â§c(è¯·è°¨æ…ä½¿ç”¨)");
+				sender.sendMessage("Â§e/apd group Â§a>>æŸ¥çœ‹å¥–åŠ±ç‰©å“ç»„æ“ä½œå¸®åŠ©");
+				sender.sendMessage("Â§e/apd addbottom [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>ä¸ºæŠ½å¥–é¡¹ç›®æ·»åŠ ä¸€ä¸ªä¿åº•å¥–åŠ±ç‰©å“ Â§c(è¯·æ‰‹æŒä¿åº•å¥–åŠ±ç‰©å“è¾“å…¥)");
+				sender.sendMessage("Â§e/apd addtaken [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>ä¸ºæŠ½å¥–é¡¹ç›®æ·»åŠ ä¸€ä¸ªæ¶ˆè€—ç‰©å“ Â§c(è¯·æ‰‹æŒæŠ½å¥–æ¶ˆè€—ç‰©å“è¾“å…¥)");
+				sender.sendMessage("Â§e/apd list Â§a>>æŸ¥çœ‹å½“å‰æ‰€æœ‰æŠ½å¥–é¡¹ç›®åç§°");
+				sender.sendMessage("Â§e/apd info [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>æŸ¥çœ‹æŒ‡å®šæŠ½å¥–é¡¹ç›®çš„ä¿¡æ¯");
+				sender.sendMessage("Â§e/apd 2 Â§a>>æŸ¥çœ‹APDå‘½ä»¤æŒ‡å—ç¬¬2é¡µ");
 				
 				break;
 			
 			case 2:
-				sender.sendMessage("¡ì6¡ìlAnotherPrizeDraw ¡ìbÃüÁîÖ¸ÄÏ ¡ìdµÚ2Ò³");
-				sender.sendMessage("¡ìe/apd editbom [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>GUI±à¼­Ò»¸ö³é½±ÏîÄ¿µÄ±£µ×ÎïÆ·(²é¿´ºÍÒÆ³ı)");
-				sender.sendMessage("¡ìe/apd edittaken [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>GUI±à¼­Ò»¸ö³é½±ÏîÄ¿µÄÏûºÄÎïÆ·(²é¿´ºÍÒÆ³ı)");
-				sender.sendMessage("¡ìe/apd rename [¾ÉµÄ³é½±ÏîÄ¿Ãû³Æ] [ĞÂµÄ³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>¸ü¸Ä³é½±ÏîÄ¿Ãû³Æ");
-				sender.sendMessage("¡ìe/apd set [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>ÉèÖÃ³é½±ÏîÄ¿Ö÷ÏûºÄÎïÆ· ¡ìc(ÇëÊÖ³Ö³é½±ÏûºÄµÄÖ÷ÎïÆ·ÊäÈë)");
-				sender.sendMessage("¡ìe/apd setmode [³é½±ÏîÄ¿Ãû³Æ] ¸ÅÂÊÄ£Ê½(shared/independent) ¡ìa>>ÉèÖÃ³é½±ÏîÄ¿¸ÅÂÊÄ£Ê½");
-				sender.sendMessage("¡ìe/apd setcon [³é½±ÏîÄ¿Ãû³Æ] ´¥·¢Á¬³éÎïÆ·ÊıÁ¿ ¡ìa>>ÉèÖÃ³é½±ÏîÄ¿´¥·¢Á¬³éµÄÎïÆ·ÊıÁ¿");
-//				sender.sendMessage("¡ìe/apd recadd ¡ìa>>Ìí¼ÓÊÖ³ÖÎïÆ·µÄºÏ³É(°üÀ¨ÊıÁ¿)");
-//				sender.sendMessage("¡ìe/apd recdel ¡ìa>>ÒÆ³ıÊÖ³ÖÎïÆ·µÄºÏ³É(°üÀ¨ÊıÁ¿)");
-				sender.sendMessage("¡ìe/apd save ¡ìa>>±£´æ³é½±ÏîÄ¿ÅäÖÃ");
-				sender.sendMessage("¡ìe/apd load ¡ìa>>´ÓÅäÖÃÎÄ¼ş¼ÓÔØ³é½±ÏîÄ¿ÅäÖÃ");
-				sender.sendMessage("¡ìe/apd 3 ¡ìa>>²é¿´APDÃüÁîÖ¸ÄÏµÚ3Ò³");
+				sender.sendMessage("Â§6Â§lAnotherPrizeDraw Â§bå‘½ä»¤æŒ‡å— Â§dç¬¬2é¡µ");
+				sender.sendMessage("Â§e/apd editbom [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>GUIç¼–è¾‘ä¸€ä¸ªæŠ½å¥–é¡¹ç›®çš„ä¿åº•ç‰©å“(æŸ¥çœ‹å’Œç§»é™¤)");
+				sender.sendMessage("Â§e/apd edittaken [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>GUIç¼–è¾‘ä¸€ä¸ªæŠ½å¥–é¡¹ç›®çš„æ¶ˆè€—ç‰©å“(æŸ¥çœ‹å’Œç§»é™¤)");
+				sender.sendMessage("Â§e/apd rename [æ—§çš„æŠ½å¥–é¡¹ç›®åç§°] [æ–°çš„æŠ½å¥–é¡¹ç›®åç§°] Â§a>>æ›´æ”¹æŠ½å¥–é¡¹ç›®åç§°");
+				sender.sendMessage("Â§e/apd set [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>è®¾ç½®æŠ½å¥–é¡¹ç›®ä¸»æ¶ˆè€—ç‰©å“ Â§c(è¯·æ‰‹æŒæŠ½å¥–æ¶ˆè€—çš„ä¸»ç‰©å“è¾“å…¥)");
+				sender.sendMessage("Â§e/apd setmode [æŠ½å¥–é¡¹ç›®åç§°] æ¦‚ç‡æ¨¡å¼(shared/independent) Â§a>>è®¾ç½®æŠ½å¥–é¡¹ç›®æ¦‚ç‡æ¨¡å¼");
+				sender.sendMessage("Â§e/apd setcon [æŠ½å¥–é¡¹ç›®åç§°] è§¦å‘è¿æŠ½ç‰©å“æ•°é‡ Â§a>>è®¾ç½®æŠ½å¥–é¡¹ç›®è§¦å‘è¿æŠ½çš„ç‰©å“æ•°é‡");
+//				sender.sendMessage("Â§e/apd recadd Â§a>>æ·»åŠ æ‰‹æŒç‰©å“çš„åˆæˆ(åŒ…æ‹¬æ•°é‡)");
+//				sender.sendMessage("Â§e/apd recdel Â§a>>ç§»é™¤æ‰‹æŒç‰©å“çš„åˆæˆ(åŒ…æ‹¬æ•°é‡)");
+				sender.sendMessage("Â§e/apd save Â§a>>ä¿å­˜æŠ½å¥–é¡¹ç›®é…ç½®");
+				sender.sendMessage("Â§e/apd load Â§a>>ä»é…ç½®æ–‡ä»¶åŠ è½½æŠ½å¥–é¡¹ç›®é…ç½®");
+				sender.sendMessage("Â§e/apd 3 Â§a>>æŸ¥çœ‹APDå‘½ä»¤æŒ‡å—ç¬¬3é¡µ");
 				
 				break;
 				
 			case 3:
-				sender.sendMessage("¡ì6¡ìlAnotherPrizeDraw ¡ìbÃüÁîÖ¸ÄÏ ¡ìdµÚ3Ò³");
-				sender.sendMessage("¡ìe/apd silence [³é½±ÏîÄ¿Ãû³Æ] true/false ¡ìa>>¿ªÆô»ò¹Ø±Õ¾²Ä¬Ä£Ê½(¾²Ä¬Ä£Ê½ÏÂ³é½±¹ı³ÌÃ»ÓĞÉùÒôºÍ±êÌâ)");
-				sender.sendMessage("¡ìe/apd get [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>»ñÈ¡¸ÃÏîÄ¿µÄÖ÷ÏûºÄÎïÆ·");
-				sender.sendMessage("¡ìe/apd gettaken [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>»ñÈ¡¸ÃÏîÄ¿µÄÆäËûÏûºÄÎïÆ·");
-				sender.sendMessage("¡ìe/apd getall [³é½±ÏîÄ¿Ãû³Æ] ¡ìa>>»ñÈ¡¸ÃÏîÄ¿µÄËùÓĞÏûºÄÎïÆ·");
-				
+				sender.sendMessage("Â§6Â§lAnotherPrizeDraw Â§bå‘½ä»¤æŒ‡å— Â§dç¬¬3é¡µ");
+				sender.sendMessage("Â§e/apd silence [æŠ½å¥–é¡¹ç›®åç§°] true/false Â§a>>å¼€å¯æˆ–å…³é—­é™é»˜æ¨¡å¼(é™é»˜æ¨¡å¼ä¸‹æŠ½å¥–è¿‡ç¨‹æ²¡æœ‰å£°éŸ³å’Œæ ‡é¢˜)");
+				sender.sendMessage("Â§e/apd get [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>è·å–è¯¥é¡¹ç›®çš„ä¸»æ¶ˆè€—ç‰©å“");
+				sender.sendMessage("Â§e/apd gettaken [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>è·å–è¯¥é¡¹ç›®çš„å…¶ä»–æ¶ˆè€—ç‰©å“");
+				sender.sendMessage("Â§e/apd getall [æŠ½å¥–é¡¹ç›®åç§°] Â§a>>è·å–è¯¥é¡¹ç›®çš„æ‰€æœ‰æ¶ˆè€—ç‰©å“");
+				sender.sendMessage("Â§e/apd setcooldown [æŠ½å¥–é¡¹ç›®åç§°] [ç§’] Â§a>>è®¾ç½®æŠ½å¥–é¡¹ç›®å†·å´æ—¶é—´");
+
 				break;
 				
 			default:
-				sender.sendMessage("¡ìcAPDÃüÁîÖ¸ÄÏÃ»ÓĞ´ËÒ³£¡");
+				sender.sendMessage("Â§cAPDå‘½ä»¤æŒ‡å—æ²¡æœ‰æ­¤é¡µï¼");
 				break;
 		}
 		sendSeparator(sender);

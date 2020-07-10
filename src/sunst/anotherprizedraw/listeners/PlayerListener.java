@@ -16,11 +16,11 @@ import sunst.anotherprizedraw.maps.PDOMap;
 import sunst.anotherprizedraw.objects.APDGroup;
 import sunst.anotherprizedraw.objects.PrizeDrawObject;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class PlayerListener implements Listener {
+
+	private Map<UUID, Long> cooldownMap = new HashMap<>();
 	
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent e) {
@@ -39,8 +39,15 @@ public class PlayerListener implements Listener {
 
 				if(APDManager.isItemSimilar(handItem, takenItem)){
 					e.setCancelled(true);
-					
+
 					if(APDManager.containsItem(inv, otherTakenItems, 1)){
+						long passedTime = System.currentTimeMillis() - cooldownMap.getOrDefault(p.getUniqueId(), 0L);
+						if (passedTime < objectPD.getCooldown() * 1000L) {
+							p.sendMessage("Â§aæŠ½å¥–è¿˜åœ¨å†·å´ä¸­ï¼Œè¯·ç¨åŽé‡è¯•ï¼ Â§7(" + (objectPD.getCooldown() - (passedTime / 1000)) + "ç§’)");
+							return;
+						}
+						cooldownMap.put(p.getUniqueId(), System.currentTimeMillis());
+
 						boolean isContinuous = false;
 						boolean isSilence = objectPD.isSilence();
 						int conQuantity = objectPD.getContinuousQuantity();
@@ -55,18 +62,18 @@ public class PlayerListener implements Listener {
 								theOtherItem.setAmount(theOtherItem.getAmount() * conQuantity);
 							}
 
-							p.sendMessage("¡ìaÄú´¥·¢ÁË¡ìe" + conQuantity + "¡ìaÁ¬³é£¡");
+							p.sendMessage("Â§aæ‚¨è§¦å‘äº†Â§e" + conQuantity + "Â§aè¿žæŠ½ï¼");
 						}
 
 						if(!isSilence)
-							p.sendTitle("¡ìa³é½±¿ªÊ¼£¡", "¡ìe×£ÄãºÃÔË~", 10, 70, 20);
+							p.sendTitle("Â§aæŠ½å¥–å¼€å§‹ï¼", "Â§eç¥ä½ å¥½è¿~", 10, 70, 20);
 						
 						handItem.setAmount(handItem.getAmount() - takenItem.getAmount());
 						APDManager.removeItem(inv, otherTakenItems);
-						p.getWorld().playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 2);
+						p.getWorld().playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 2);
 
 						boolean finalIsContinuous = isContinuous;
-						Bukkit.getScheduler().runTaskAsynchronously(AnotherPrizeDraw.pluginAPD, () -> {
+						Bukkit.getScheduler().runTask(AnotherPrizeDraw.pluginAPD, () -> {
 							if(!isSilence){
 								try {
 									for(int i = 1; i <= 30; i++){
@@ -77,13 +84,13 @@ public class PlayerListener implements Listener {
 										} else if(i < 25){
 											sleepTime = 500;
 											p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 1);
-										} else{
+										} else {
 											sleepTime = 800;
 											p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 1.2f);
 										}
-
-
+										System.out.println("sleep");
 										Thread.sleep(sleepTime);
+										System.out.println("sleeped");
 									}
 								} catch (Exception ex) {
 									ex.printStackTrace();
@@ -98,18 +105,19 @@ public class PlayerListener implements Listener {
 									double num = rand.nextDouble() * 100;
 									double cnt = 0;
 
-									for(ItemStack bottomItem : objectPD.getBottomRewards())
-										Bukkit.getScheduler().runTask(AnotherPrizeDraw.pluginAPD,
-												() -> p.getWorld().dropItem(p.getLocation(), bottomItem));
-									
 									for(APDGroup apdGroup : objectPD.getGroups().values()){
 										boolean isGet = false;
 										
 										if(objectPD.getMode() == PrizeDrawObject.PDOMode.SHARED){
 											if(num >= cnt && num <= cnt+apdGroup.getProbability()){
 												for(ItemStack reward : apdGroup.getRewardItems())
-													Bukkit.getScheduler().runTask(AnotherPrizeDraw.pluginAPD,
-															() -> p.getWorld().dropItem(p.getLocation(), reward));
+													Bukkit.getScheduler().runTask(AnotherPrizeDraw.pluginAPD, () -> {
+														if (p.getInventory().firstEmpty() == -1) {
+															p.getWorld().dropItem(p.getLocation(), reward);
+														} else {
+															p.getInventory().addItem(reward);
+														}
+													});
 
 												isGet = true;
 											}
@@ -120,9 +128,15 @@ public class PlayerListener implements Listener {
 											double[] range = getIndependentPro(apdGroup.getProbability());
 
 											if(num >= range[0] && num <= range[1]){
-												for(ItemStack reward : apdGroup.getRewardItems())
-													Bukkit.getScheduler().runTask(AnotherPrizeDraw.pluginAPD,
-															() -> p.getWorld().dropItem(p.getLocation(), reward));
+												for(ItemStack reward : apdGroup.getRewardItems()) {
+													Bukkit.getScheduler().runTask(AnotherPrizeDraw.pluginAPD, () -> {
+														if (p.getInventory().firstEmpty() == -1) {
+															p.getWorld().dropItem(p.getLocation(), reward);
+														} else {
+															p.getInventory().addItem(reward);
+														}
+													});
+												}
 
 												isGet = true;
 											}
@@ -133,11 +147,11 @@ public class PlayerListener implements Listener {
 												p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 0.5f);
 											if(apdGroup.hasMessage())
 												Bukkit.broadcastMessage(apdGroup.getMessage()
-														.replace("{player}", p.getDisplayName()));
+														.replace("{player}", p.getName()));
 											if(apdGroup.hasCommands()){
 												for(String cmd : apdGroup.getCommands()){
 													Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
-															cmd.replace("{player}", p.getDisplayName()));
+															cmd.replace("{player}", p.getName()));
 												}
 											}
 											
@@ -151,10 +165,20 @@ public class PlayerListener implements Listener {
 							}
 
 							if(finalIsContinuous){
-								for(int i=0; i<conQuantity; i++)
-									new DoPrizeDraw().runTaskAsynchronously(AnotherPrizeDraw.pluginAPD);
+								for(int i=0; i<conQuantity; i++) {
+									new DoPrizeDraw().runTask(AnotherPrizeDraw.pluginAPD);
+								}
+								for (ItemStack bottomItem : objectPD.getBottomRewards()) {
+									Bukkit.getScheduler().runTask(AnotherPrizeDraw.pluginAPD, () -> {
+										if (p.getInventory().firstEmpty() == -1) {
+											p.getWorld().dropItem(p.getLocation(), bottomItem);
+										} else {
+											p.getInventory().addItem(bottomItem);
+										}
+									});
+								}
 							} else {
-								new DoPrizeDraw().runTaskAsynchronously(AnotherPrizeDraw.pluginAPD);
+								new DoPrizeDraw().runTask(AnotherPrizeDraw.pluginAPD);
 							}
 							
 							if(!isSilence)

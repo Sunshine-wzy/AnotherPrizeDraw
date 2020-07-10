@@ -1,0 +1,26 @@
+<component name="ProjectDictionaryState">
+  <dictionary name="hp">
+    <words>
+      <w>addbottom</w>
+      <w>addcmd</w>
+      <w>addrec</w>
+      <w>addtaken</w>
+      <w>cooldown</w>
+      <w>delcmd</w>
+      <w>delrec</w>
+      <w>editbom</w>
+      <w>edittaken</w>
+      <w>getall</w>
+      <w>gettaken</w>
+      <w>recadd</w>
+      <w>recdel</w>
+      <w>rerec</w>
+      <w>setcmd</w>
+      <w>setcon</w>
+      <w>setmode</w>
+      <w>setmsg</w>
+      <w>setpro</w>
+      <w>setrec</w>
+    </words>
+  </dictionary>
+</component>

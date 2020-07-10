@@ -15,23 +15,25 @@ public class PrizeDrawObject implements ConfigurationSerializable {
 	private PDOMode mode;
 	private int continuousQuantity;
 	private boolean silence;
+	private int cooldown;
 
 	private Map<String, APDGroup> groups = new HashMap<>();
 	private List<ItemStack> bottomRewards = new ArrayList<>();
 	
 	
-	public PrizeDrawObject(ItemStack takenItem, PDOMode mode, int continuousQuantity, boolean silence) {
+	public PrizeDrawObject(ItemStack takenItem, PDOMode mode, int continuousQuantity, boolean silence, int cooldown) {
 		this.takenItem = takenItem.clone();
 		this.mode = mode;
 		this.continuousQuantity = continuousQuantity;
 		this.silence = silence;
+		this.cooldown = cooldown;
 	}
 	
 	public PrizeDrawObject(Map<String, Object> map) {
 		this((ItemStack) map.get("takenItem"),
 				PDOMode.getByName((String) map.get("mode")),
 				(int) map.get("continuousQuantity"),
-				map.containsKey("silence") && (boolean) map.get("silence"));
+				map.containsKey("silence") && (boolean) map.get("silence"), (Integer) map.getOrDefault("cooldown", 0));
 		
 		this.otherTakenItems = APDManager.castList(map.get("otherTakenItems"), ItemStack.class);
 		this.groups = APDManager.castMap(map.get("groups"), String.class, APDGroup.class);
@@ -72,7 +74,10 @@ public class PrizeDrawObject implements ConfigurationSerializable {
 	public void addBottomReward(ItemStack bottomReward) {
 		this.bottomRewards.add(bottomReward.clone());
 	}
-	
+
+	public void setCooldown(int cooldown) {
+		this.cooldown = cooldown;
+	}
 	
 	public ItemStack getTakenItem() {
 		return takenItem.clone();
@@ -101,7 +106,10 @@ public class PrizeDrawObject implements ConfigurationSerializable {
 	public List<ItemStack> getBottomRewards() {
 		return bottomRewards;
 	}
-	
+
+	public int getCooldown() {
+		return cooldown;
+	}
 	
 	@Override
 	public Map<String, Object> serialize() {
@@ -114,6 +122,7 @@ public class PrizeDrawObject implements ConfigurationSerializable {
 		map.put("groups", groups);
 		map.put("bottomRewards", bottomRewards);
 		map.put("silence", silence);
+		map.put("cooldown", cooldown);
 
 		return map;
 	}
