@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class APDManager {
-	// åˆ¤æ–­ä¸¤ç‰©å“æ˜¯å¦ç›¸åŒ
+	// ÅĞ¶ÏÁ½ÎïÆ·ÊÇ·ñÏàÍ¬
 	public static boolean isItemSimilar(ItemStack item, ItemStack theItem, boolean lore) {
 		if (item == null)
 			return theItem == null;
@@ -57,7 +57,7 @@ public class APDManager {
 	}
 	
 	
-	// åˆ¤æ–­èƒŒåŒ…ä¸­æ˜¯å¦å«æœ‰ä¸€å®šæ•°é‡çš„ç‰©å“ItemStack
+	// ÅĞ¶Ï±³°üÖĞÊÇ·ñº¬ÓĞÒ»¶¨ÊıÁ¿µÄÎïÆ·ItemStack
 	public static boolean containsItem(Inventory inv, ItemStack item, int amount) {
 		if (item == null) {
 			return false;
@@ -123,7 +123,7 @@ public class APDManager {
 		}
 	}
 	
-	// Objectè½¬List
+	// Object×ªList
 	public static <T> List<T> castList(Object obj, Class<T> clazz) {
 		List<T> result = new ArrayList<>();
 		if (obj instanceof List<?>) {
@@ -134,7 +134,7 @@ public class APDManager {
 		return result;
 	}
 
-	// Objectè½¬Map
+	// Object×ªMap
 	public static <K, V> Map<K, V> castMap(Object obj, Class<K> kClazz, Class<V> vClazz) {
 		Map<K, V> result = new HashMap<>();
 		if(obj instanceof Map<?, ?>){
@@ -184,9 +184,9 @@ public class APDManager {
 		return ans;
 	}
 
-	//å¿«é€Ÿåˆ›å»ºè¾¹æ¡†
+	//¿ìËÙ´´½¨±ß¿ò
 	public static void createEdge(Inventory inv, ItemStack item_bk) {
-		APDItem item = new APDItem(item_bk, "Â§fè¾¹æ¡†");
+		APDItem item = new APDItem(item_bk, "¡ìf±ß¿ò");
 
 		for(int i = 0; i < 9; i++) {
 			inv.setItem(i, item);

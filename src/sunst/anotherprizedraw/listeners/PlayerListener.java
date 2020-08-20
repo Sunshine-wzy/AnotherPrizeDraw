@@ -43,7 +43,7 @@ public class PlayerListener implements Listener {
 					if(APDManager.containsItem(inv, otherTakenItems, 1)){
 						long passedTime = System.currentTimeMillis() - cooldownMap.getOrDefault(p.getUniqueId(), 0L);
 						if (passedTime < objectPD.getCooldown() * 1000L) {
-							p.sendMessage("Â§aæŠ½å¥–è¿˜åœ¨å†·å´ä¸­ï¼Œè¯·ç¨åŽé‡è¯•ï¼ Â§7(" + (objectPD.getCooldown() - (passedTime / 1000)) + "ç§’)");
+							p.sendMessage("¡ìa³é½±»¹ÔÚÀäÈ´ÖÐ£¬ÇëÉÔºóÖØÊÔ£¡ ¡ì7(" + (objectPD.getCooldown() - (passedTime / 1000)) + "Ãë)");
 							return;
 						}
 						cooldownMap.put(p.getUniqueId(), System.currentTimeMillis());
@@ -62,11 +62,11 @@ public class PlayerListener implements Listener {
 								theOtherItem.setAmount(theOtherItem.getAmount() * conQuantity);
 							}
 
-							p.sendMessage("Â§aæ‚¨è§¦å‘äº†Â§e" + conQuantity + "Â§aè¿žæŠ½ï¼");
+							p.sendMessage("¡ìaÄú´¥·¢ÁË¡ìe" + conQuantity + "¡ìaÁ¬³é£¡");
 						}
 
 						if(!isSilence)
-							p.sendTitle("Â§aæŠ½å¥–å¼€å§‹ï¼", "Â§eç¥ä½ å¥½è¿~", 10, 70, 20);
+							p.sendTitle("¡ìa³é½±¿ªÊ¼£¡", "¡ìe×£ÄãºÃÔË~", 10, 70, 20);
 						
 						handItem.setAmount(handItem.getAmount() - takenItem.getAmount());
 						APDManager.removeItem(inv, otherTakenItems);

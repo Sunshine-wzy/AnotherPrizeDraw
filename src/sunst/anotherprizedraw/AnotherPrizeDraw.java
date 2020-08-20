@@ -42,32 +42,32 @@ public class AnotherPrizeDraw extends JavaPlugin {
 		pluginManager = Bukkit.getServer().getPluginManager();
 		dataFolder = this.getDataFolder();
 		
-		loggerAPD.info("æ‚¨å·²å¯ç”¨AnotherPrizeDrawæ’ä»¶ï¼");
-		loggerAPD.info("ä½œè€…ï¼šSunshine_wzy");
-		loggerAPD.info("Bugåé¦ˆQç¾¤ï¼š423179929");
+		loggerAPD.info("ÄúÒÑÆôÓÃAnotherPrizeDraw²å¼ş£¡");
+		loggerAPD.info("×÷Õß£ºSunshine_wzy");
+		loggerAPD.info("Bug·´À¡QÈº£º423179929");
 
-		//æ³¨å†Œåºåˆ—åŒ–ç±»
+		//×¢²áĞòÁĞ»¯Àà
 		ConfigurationSerialization.registerClass(PrizeDrawObject.class);
 		ConfigurationSerialization.registerClass(APDGroup.class);
 		
-		//æ³¨å†ŒæŒ‡ä»¤
+		//×¢²áÖ¸Áî
 		Bukkit.getPluginCommand("apd").setExecutor(new APDCommand());
 		Bukkit.getPluginCommand("apd").setTabCompleter(new APDTabCompleter());
 		
-		//æ³¨å†Œç›‘å¬å™¨
+		//×¢²á¼àÌıÆ÷
 		registerListeners();
 		
-		//è½½å…¥é…ç½®æ–‡ä»¶
+		//ÔØÈëÅäÖÃÎÄ¼ş
 		loadResConfig();
 		
 	}
 
 	@Override
 	public void onDisable() {
-		//å–æ¶ˆè°ƒåº¦ä»»åŠ¡
+		//È¡Ïûµ÷¶ÈÈÎÎñ
 		Bukkit.getScheduler().cancelTasks(this);
 		
-		//ä¿å­˜é…ç½®æ–‡ä»¶
+		//±£´æÅäÖÃÎÄ¼ş
 		saveResConfig();
 	}
 
@@ -92,11 +92,11 @@ public class AnotherPrizeDraw extends JavaPlugin {
 					}
 				}
 			} finally {
-				loggerAPD.info("é…ç½®æ–‡ä»¶åŠ è½½å®Œæˆ");
+				loggerAPD.info("ÅäÖÃÎÄ¼ş¼ÓÔØÍê³É");
 			}
 		} else if(dir.mkdirs()){
-			loggerAPD.info("é…ç½®æ–‡ä»¶å¤¹æˆåŠŸç”Ÿæˆ");
-		} else loggerAPD.info("é…ç½®æ–‡ä»¶å¤¹ç”Ÿæˆå¤±è´¥");
+			loggerAPD.info("ÅäÖÃÎÄ¼ş¼Ğ³É¹¦Éú³É");
+		} else loggerAPD.info("ÅäÖÃÎÄ¼ş¼ĞÉú³ÉÊ§°Ü");
 	}
 	
 	public static void saveResConfig() {
@@ -138,17 +138,17 @@ public class AnotherPrizeDraw extends JavaPlugin {
 					if(!usedNames.contains(str)){
 						File noUseFile = new File(dir, str);
 						if(noUseFile.delete()){
-							loggerAPD.info("å·²åˆ é™¤å¤šä½™çš„é…ç½®æ–‡ä»¶");
-						} else loggerAPD.info("å¤šä½™çš„é…ç½®æ–‡ä»¶åˆ é™¤å¤±è´¥");
+							loggerAPD.info("ÒÑÉ¾³ı¶àÓàµÄÅäÖÃÎÄ¼ş");
+						} else loggerAPD.info("¶àÓàµÄÅäÖÃÎÄ¼şÉ¾³ıÊ§°Ü");
 					}
 				}
 				
 			} finally {
-				loggerAPD.info("é…ç½®æ–‡ä»¶ä¿å­˜æˆåŠŸ");
+				loggerAPD.info("ÅäÖÃÎÄ¼ş±£´æ³É¹¦");
 			}
 		} else if(dir.mkdirs()){
-			loggerAPD.info("é…ç½®æ–‡ä»¶å¤¹æˆåŠŸç”Ÿæˆ");
-		} else loggerAPD.info("é…ç½®æ–‡ä»¶å¤¹ç”Ÿæˆå¤±è´¥");
+			loggerAPD.info("ÅäÖÃÎÄ¼ş¼Ğ³É¹¦Éú³É");
+		} else loggerAPD.info("ÅäÖÃÎÄ¼ş¼ĞÉú³ÉÊ§°Ü");
 		
 	}
 	
