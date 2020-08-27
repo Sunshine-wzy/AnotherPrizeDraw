@@ -88,9 +88,9 @@ public class PlayerListener implements Listener {
 											sleepTime = 800;
 											p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 1.2f);
 										}
-										System.out.println("sleep");
+//										System.out.println("sleep");
 										Thread.sleep(sleepTime);
-										System.out.println("sleeped");
+//										System.out.println("slept");
 									}
 								} catch (Exception ex) {
 									ex.printStackTrace();
